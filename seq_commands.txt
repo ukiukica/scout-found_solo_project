@@ -10,3 +10,8 @@ npx sequelize seed:generate --name filmLocations
 npx sequelize seed:generate --name reviews
 
 npx sequelize seed:generate --name faveLists
+
+
+npx dotenv sequelize db:migrate
+
+npx dotenv sequelize db:seed:all
