@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import filmLocationsReducer from './filmLocations'
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  filmLocationsReducer,
   // add reducer functions here
 });
 
