@@ -6,6 +6,9 @@ const db = require('../../db/models');
 const { sequelize } = require('../../db/models');
 const { Op } = require("sequelize");
 
+const filmLocationsValidations = require('../../validations/filmLocations')
+
+
 
 router.get('/', asyncHandler(async (req, res) => {
     console.log("ENTERED GET HOME ROUTE")
@@ -13,5 +16,14 @@ router.get('/', asyncHandler(async (req, res) => {
     console.log(filmLocations)
     return res.json(filmLocations);
 }))
+
+router.post(
+    '/',
+    filmLocationsValidations.validateCreate,
+    asyncHandler(async (req, res) => {
+        const id = await db.FilmLocation.create(req.body);
+        return res.redirect(`${req.baseUrl}/${id}`)
+    })
+)
 
 module.exports = router;
