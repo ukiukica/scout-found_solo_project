@@ -15,10 +15,15 @@ const imageUrl = check('imageUrl')
 .notEmpty()
 .withMessage('cannot be empty')
 
+const address = check('address')
+.notEmpty()
+.withMessage('cannot be empty')
+
 exports.validateCreate = [
     title,
     description,
     imageUrl,
+    address,
     handleValidationErrors
 ]
 

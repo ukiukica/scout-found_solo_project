@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('FaveLists', [
       {
       userId: 1,
-      filmLocationId: 2,
+      filmLocationId: 1,
       createdAt: '2020-10-11',
       updatedAt: '2020-10-11'
     }

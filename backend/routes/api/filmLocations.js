@@ -19,10 +19,12 @@ router.get('/', asyncHandler(async (req, res) => {
 
 router.post(
     '/',
-    filmLocationsValidations.validateCreate,
+    // filmLocationsValidations.validateCreate,
     asyncHandler(async (req, res) => {
-        const id = await db.FilmLocation.create(req.body);
-        return res.redirect(`${req.baseUrl}/${id}`)
+        const {title, description, imageUrl, address, userId} = req.body;
+        const filmLocation = await db.FilmLocation.create({title, description, imageUrl, address, userId})
+        // const id = await db.FilmLocation.create(req.body);
+        // return res.redirect(`${req.baseUrl}/${id}`)
     })
 )
 

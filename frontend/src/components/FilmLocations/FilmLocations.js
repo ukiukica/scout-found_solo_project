@@ -17,14 +17,15 @@ function FilmLocations() {
         <>
             <h2>Film Locations</h2>
             {filmLocations.list.map((filmLocation) => (
-                <ul>
-                    <li key={filmLocation.title}>{filmLocation.title}</li>
-                    <li key={filmLocation.description}>{filmLocation.description}</li>
+                <ul key={filmLocation.id}>
+                    <li>{filmLocation.title}</li>
+                    <li>{filmLocation.description}</li>
+                    <li>{filmLocation.address}</li>
                     <li><img src={filmLocation.imageUrl}/></li>
                 </ul>
             ))}
 
-            
+
         </>
     )
 }

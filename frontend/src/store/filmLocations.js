@@ -23,7 +23,7 @@ export const getFilmLocations = () => async (dispatch) => {
 }
 
 export const createFilmLocation = (payload) => async (dispatch) => {
-    const response = await fetch('/api/filmLocations', {
+    const response = await csrfFetch('/api/filmLocations', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
