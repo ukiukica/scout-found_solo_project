@@ -39,4 +39,13 @@ router.put(
     })
 )
 
+router.delete(
+    '/:filmLocationId',
+    asyncHandler(async (req, res) => {
+        const filmLocation = await db.FilmLocation.findByPk(parseInt(req.params.filmLocationId, 10))
+        await filmLocation.destroy()
+        return res.json("location deleted")
+    })
+)
+
 module.exports = router;

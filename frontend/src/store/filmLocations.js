@@ -2,14 +2,20 @@ import { csrfFetch } from "./csrf"
 
 const POPULATE = 'filmLocations/POPULATE'
 const ADD_FILM_LOCATION = 'filmLocations/ADD'
+const REMOVE_FILM_LOCATION = 'filmLocation/REMOVE'
 
 const populate = (filmLocations) => ({
     type: POPULATE,
     filmLocations
 })
 
-const addFilmLocation = filmLocation => ({
+const addFilmLocation = (filmLocation) => ({
     type: ADD_FILM_LOCATION,
+    filmLocation
+})
+
+const deleteFilmLocation = (filmLocation) => ({
+    type: REMOVE_FILM_LOCATION,
     filmLocation
 })
 
@@ -52,6 +58,19 @@ export const editFilmLocation = (payload) => async (dispatch) => {
     }
 }
 
+export const removeFilmLocation = (payload) => async (dispatch) => {
+    const response = await csrfFetch(`/api/filmLocations/${payload.id}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const filmLocation = await response.json()
+        dispatch(deleteFilmLocation(filmLocation))
+        return filmLocation
+    }
+}
 
 const filmLocationsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -82,6 +101,10 @@ const filmLocationsReducer = (state = initialState, action) => {
                     ...action.filmLocation
                 }
             }
+        case REMOVE_FILM_LOCATION:
+            const newState = { ...state };
+            delete newState[action.filmLocationId];
+            return newState;
         default:
             return state;
     }
