@@ -38,6 +38,19 @@ export const createFilmLocation = (payload) => async (dispatch) => {
     }
 }
 
+export const editFilmLocation = (payload) => async (dispatch) => {
+    const response = await csrfFetch(`/api/filmLocations/${payload.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
+
+    if (response.ok) {
+        const filmLocation = await response.json()
+        dispatch(addFilmLocation(filmLocation))
+        return filmLocation
+    }
+}
 
 
 const filmLocationsReducer = (state = initialState, action) => {
@@ -56,7 +69,7 @@ const filmLocationsReducer = (state = initialState, action) => {
             if (!state[action.filmLocation.id]) {
                 const newState = {
                     ...state,
-                    [action.filmLocation.id]: action.pokemon
+                    [action.filmLocation.id]: action.filmLocation
                 }
                 const filmLocationList = newState.list.map(id => newState[id]);
                 filmLocationList.push(action.filmLocation)
@@ -66,7 +79,7 @@ const filmLocationsReducer = (state = initialState, action) => {
                 ...state,
                 [action.filmLocation.id]: {
                     ...state[action.filmLocation.id],
-                    ...action.pokemon
+                    ...action.filmLocation
                 }
             }
         default:

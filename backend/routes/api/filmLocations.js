@@ -29,4 +29,14 @@ router.post(
     })
 )
 
+router.put(
+    '/:filmLocationId',
+    asyncHandler(async (req, res) => {
+        const {title, description, imageUrl, address} = req.body;
+        const filmLocation = await db.FilmLocation.findByPk(parseInt(req.params.filmLocationId, 10))
+        filmLocation.update({title, description, imageUrl, address})
+        return res.json(filmLocation)
+    })
+)
+
 module.exports = router;

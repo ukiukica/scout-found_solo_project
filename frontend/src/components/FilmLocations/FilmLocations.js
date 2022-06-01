@@ -1,24 +1,24 @@
 import React from 'react';
-import { NavLink, Route, useParams } from 'react-router-dom';
+import { Link, NavLink, Route, useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getFilmLocations } from '../../store/filmLocations'
+// import { getFilmLocations } from '../../store/filmLocations'
 
 
 function FilmLocations() {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getFilmLocations())
-    }, [dispatch])
+    // const dispatch = useDispatch();
+    // useEffect(() => {
+    //     dispatch(getFilmLocations())
+    // }, [dispatch])
     const filmLocations = useSelector(state => state.filmLocationsReducer)
-    console.log(filmLocations)
+    // console.log(filmLocations)
     return (
         <>
             <h2>Film Locations</h2>
             {filmLocations.list.map((filmLocation) => (
                 <ul key={filmLocation.id}>
-                    <li>{filmLocation.title}</li>
+                    <li><Link to={`/filmLocations/${filmLocation.id}`}>{filmLocation.title}</Link></li>
                     <li>{filmLocation.description}</li>
                     <li>{filmLocation.address}</li>
                     <li><img src={filmLocation.imageUrl}/></li>
