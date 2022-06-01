@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf"
+
 const POPULATE = 'filmLocations/POPULATE'
 const ADD_FILM_LOCATION = 'filmLocations/ADD'
 

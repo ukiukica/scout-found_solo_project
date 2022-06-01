@@ -25,6 +25,7 @@ router.post(
         const filmLocation = await db.FilmLocation.create({title, description, imageUrl, address, userId})
         // const id = await db.FilmLocation.create(req.body);
         // return res.redirect(`${req.baseUrl}/${id}`)
+        return res.json(filmLocation)
     })
 )
 

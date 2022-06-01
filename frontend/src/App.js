@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import FilmLocations from "./components/FilmLocations";
+import CreateFilmLocation from "./components/CreateFilmLocationForm/CreateFilmLocationForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path = '/filmLocations'>
             <FilmLocations />
+          </Route>
+          <Route exact path = '/filmLocations/new'>
+            <CreateFilmLocation />
           </Route>
         </Switch>
       )}
