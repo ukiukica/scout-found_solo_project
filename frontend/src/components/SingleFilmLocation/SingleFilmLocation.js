@@ -12,9 +12,9 @@ function SingleFilmLocation() {
     console.log("CURRENT FILM LOCATION", currentFilmLocation)
     return (
         <div>
+            <h1>Single Film Location</h1>
             {currentFilmLocation && (
             <ul>
-                <h1>Single Film Location</h1>
                 <li>{currentFilmLocation.title}</li>
                 <li>{currentFilmLocation.description}</li>
                 <li>{currentFilmLocation.address}</li>

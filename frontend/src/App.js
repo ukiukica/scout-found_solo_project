@@ -42,8 +42,8 @@ function App() {
           <Route path = '/filmLocations/:filmLocationId/edit'>
             <EditFilmLocation />
           </Route>
-          <Route>
-            <SingleFilmLocation path = '/filmLocations/:filmLocationId'/>
+          <Route path = '/filmLocations/:filmLocationId'>
+            <SingleFilmLocation />
           </Route>
         </Switch>
       )}
