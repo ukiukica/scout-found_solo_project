@@ -14,6 +14,9 @@ function FilmLocations() {
     const filmLocations = useSelector(state => state.filmLocationsReducer)
     const filmLocationsArr = Object.values(filmLocations)
     // console.log(filmLocations)
+    const reviews = useSelector(state => state.reviewsReducer)
+    const reviewsArr = Object.values(reviews)
+    console.log("REVIEWS ARR", reviewsArr)
     return (
         <>
             <h2>Film Locations</h2>
@@ -29,6 +32,14 @@ function FilmLocations() {
             <Link to={`/filmLocations/new`}>
                 <button>Add a Location</button>
             </Link>
+
+            <h2>Reviews</h2>
+            {reviewsArr.map((review) => (
+                <ul key={review.id}>
+                    <li>{review.User.username}</li>
+                    <li>{review.content}</li>
+                </ul>
+            ))}
             </div>
 
 

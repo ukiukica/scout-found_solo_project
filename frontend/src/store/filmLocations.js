@@ -115,9 +115,9 @@ const filmLocationsReducer = (state = initialState, action) => {
             }
 
         case REMOVE_FILM_LOCATION:
-            console.log("ACTION:", action)
+            // console.log("ACTION:", action)
             const newState = { ...state };
-            console.log("ACTION.FILMLOCATION:", action.filmLocation)
+            // console.log("ACTION.FILMLOCATION:", action.filmLocation)
             delete newState[action.filmLocation.id];
             return newState;
 

@@ -9,6 +9,7 @@ import CreateFilmLocation from "./components/CreateFilmLocationForm/CreateFilmLo
 import { getFilmLocations } from './store/filmLocations'
 import SingleFilmLocation from "./components/SingleFilmLocation/SingleFilmLocation"
 import EditFilmLocation from "./components/EditFilmLocationForm/EditFilmLocation";
+import { getReviews } from "./store/reviews";
 
 
 function App() {
@@ -22,8 +23,16 @@ function App() {
   useEffect(() => {
       dispatch(getFilmLocations())
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getReviews())
+  }, [dispatch])
+
   const filmLocations = useSelector(state => state.filmLocationsReducer)
-  console.log(filmLocations)
+  // console.log(filmLocations)
+  const reviews = useSelector(state => state.reviewsReducer)
+
+
 
   return (
     <>
