@@ -12,12 +12,13 @@ function FilmLocations() {
     //     dispatch(getFilmLocations())
     // }, [dispatch])
     const filmLocations = useSelector(state => state.filmLocationsReducer)
+    const filmLocationsArr = Object.values(filmLocations)
     // console.log(filmLocations)
     return (
         <>
             <h2>Film Locations</h2>
             <div>
-            {filmLocations.list.map((filmLocation) => (
+            {filmLocationsArr.map((filmLocation) => (
                 <ul key={filmLocation.id}>
                     <li><Link to={`/filmLocations/${filmLocation.id}`}>{filmLocation.title}</Link></li>
                     <li>{filmLocation.description}</li>

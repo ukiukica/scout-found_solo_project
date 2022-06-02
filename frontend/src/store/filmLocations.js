@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf"
 
 const POPULATE = 'filmLocations/POPULATE'
 const ADD_FILM_LOCATION = 'filmLocations/ADD'
+const EDIT_FILM_LOCATION = 'filmLocations/EDIT'
 const REMOVE_FILM_LOCATION = 'filmLocation/REMOVE'
 
 const populate = (filmLocations) => ({
@@ -14,12 +15,17 @@ const addFilmLocation = (filmLocation) => ({
     filmLocation
 })
 
+const updateFilmLocation = (filmLocation) => ({
+    type: EDIT_FILM_LOCATION,
+    filmLocation
+})
+
 const deleteFilmLocation = (filmLocation) => ({
     type: REMOVE_FILM_LOCATION,
     filmLocation
 })
 
-const initialState = { list: [] };
+const initialState = {};
 
 export const getFilmLocations = () => async (dispatch) => {
     const response = await fetch('/api/filmLocations');
@@ -53,7 +59,7 @@ export const editFilmLocation = (payload) => async (dispatch) => {
 
     if (response.ok) {
         const filmLocation = await response.json()
-        dispatch(addFilmLocation(filmLocation))
+        dispatch(updateFilmLocation(filmLocation))
         return filmLocation
     }
 }
@@ -67,7 +73,7 @@ export const removeFilmLocation = (payload) => async (dispatch) => {
 
     if (response.ok) {
         const filmLocation = await response.json()
-        dispatch(deleteFilmLocation(filmLocation))
+        dispatch(deleteFilmLocation(payload))
         return filmLocation
     }
 }
@@ -80,9 +86,8 @@ const filmLocationsReducer = (state = initialState, action) => {
                 allFilmLocations[filmLocation.id] = filmLocation;
             });
             return {
-                ...allFilmLocations,
                 ...state,
-                list: action.filmLocations
+                ...allFilmLocations
             }
         case ADD_FILM_LOCATION:
             if (!state[action.filmLocation.id]) {
@@ -90,22 +95,32 @@ const filmLocationsReducer = (state = initialState, action) => {
                     ...state,
                     [action.filmLocation.id]: action.filmLocation
                 }
-                console.log("ACTION -------------->", action.filmLocation)
-                const filmLocationList = newState.list.map(id => newState[id]);
-                filmLocationList.push(action.filmLocation)
+                // const filmLocationList = newState.list.map(id => newState[id]);
+                // filmLocationList.push(action.filmLocation)
                 return newState;
             }
+            // return newState;
+            // return {
+
+                // ...state,
+                // [action.filmLocation.id]: {
+                //     ...state[action.filmLocation.id],
+                //     ...action.filmLocation
+                // }
+            // }
+        case EDIT_FILM_LOCATION:
             return {
                 ...state,
-                [action.filmLocation.id]: {
-                    ...state[action.filmLocation.id],
-                    ...action.filmLocation
-                }
+                [action.filmLocation.id]: action.filmLocation
             }
+
         case REMOVE_FILM_LOCATION:
+            console.log("ACTION:", action)
             const newState = { ...state };
-            delete newState[action.filmLocationId];
+            console.log("ACTION.FILMLOCATION:", action.filmLocation)
+            delete newState[action.filmLocation.id];
             return newState;
+
         default:
             return state;
     }
