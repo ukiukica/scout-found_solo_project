@@ -16,6 +16,7 @@ function FilmLocations() {
     return (
         <>
             <h2>Film Locations</h2>
+            <div>
             {filmLocations.list.map((filmLocation) => (
                 <ul key={filmLocation.id}>
                     <li><Link to={`/filmLocations/${filmLocation.id}`}>{filmLocation.title}</Link></li>
@@ -24,6 +25,10 @@ function FilmLocations() {
                     <li><img src={filmLocation.imageUrl}/></li>
                 </ul>
             ))}
+            <Link to={`/filmLocations/new`}>
+                <button>Add a Location</button>
+            </Link>
+            </div>
 
 
         </>

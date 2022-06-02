@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
+import { Link, NavLink, Route, useParams, useHistory, Redirect } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFilmLocation } from '../../store/filmLocations';
@@ -21,6 +21,7 @@ function SingleFilmLocation() {
 
         if (removedFilmLocation) {
             history.push(`/filmLocations`)
+
         }
     }
 
@@ -40,8 +41,10 @@ function SingleFilmLocation() {
                 onClick={onClick}
             >Delete
             </button>
+            <Link to={`/filmLocations/${currentFilmLocation.id}/edit`}>
+                <button>Edit</button>
+            </Link>
 
-            <button>Edit</button>
             </div>
             )}
         </div>

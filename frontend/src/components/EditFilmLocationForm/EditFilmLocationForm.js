@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Redirect } from 'react-router-dom';
 
 import { createFilmLocation, editFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
@@ -47,6 +47,7 @@ const EditFilmLocationForm = ({currentFilmLocation}) => {
 
         if (editedFilmLocation) {
             history.push(`/filmLocations/${currentFilmLocation.id}`)
+            // <Redirect to={`/filmLocations/${currentFilmLocation.id}`} />
         }
     }
 

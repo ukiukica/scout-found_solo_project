@@ -90,6 +90,7 @@ const filmLocationsReducer = (state = initialState, action) => {
                     ...state,
                     [action.filmLocation.id]: action.filmLocation
                 }
+                console.log("ACTION -------------->", action.filmLocation)
                 const filmLocationList = newState.list.map(id => newState[id]);
                 filmLocationList.push(action.filmLocation)
                 return newState;
