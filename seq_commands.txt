@@ -1,0 +1,17 @@
+npx sequelize model:generate --name FilmLocation --attributes id:integer,title:string,description:string,imageUrl:string,userId:integer
+
+npx sequelize model:generate --name Review --attributes id:integer,content:string,userId:integer,filmLocationId:integer
+
+npx sequelize model:generate --name FaveList --attributes userId:integer,filmLocationId:integer
+
+
+npx sequelize seed:generate --name filmLocations
+
+npx sequelize seed:generate --name reviews
+
+npx sequelize seed:generate --name faveLists
+
+
+npx dotenv sequelize db:migrate
+
+npx dotenv sequelize db:seed:all
