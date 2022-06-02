@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    firstName: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING(50),
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -49,6 +57,13 @@ module.exports = (sequelize, DataTypes) => {
 
   User.associate = function (models) {
     // associations can be defined here
+    User.hasMany(models.FilmLocation, { foreignKey: 'userId'})
+    User.hasMany(models.Review, { foreignKey: 'userId'})
+    // User.belongsToMany(models.FaveList, {
+    //   through: 'FaveList',
+    //   foreignKey: 'userId',
+    //   otherKey: 'filmLocationId'
+    // })
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function
