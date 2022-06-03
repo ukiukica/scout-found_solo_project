@@ -22,7 +22,7 @@ function FilmLocations() {
                 <div key={filmLocation.id}>
                     <img src={filmLocation.imageUrl} />
                     <h3><Link to={`/filmLocations/${filmLocation.id}`}>{filmLocation.title}</Link></h3>
-                    <p>*film location logline goes here*</p>
+                    <p>{filmLocation.logline}</p>
                 </div>
             ))}
             {sessionUser &&

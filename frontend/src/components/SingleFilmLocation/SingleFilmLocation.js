@@ -43,6 +43,7 @@ function SingleFilmLocation() {
                         <img src={currentFilmLocation.imageUrl} />
                     </div>
                     <h1>{currentFilmLocation.title}</h1>
+                    <p>{currentFilmLocation.logline}</p>
                     <p>{currentFilmLocation.description}</p>
                     <p>Address: {currentFilmLocation.address}</p>
 

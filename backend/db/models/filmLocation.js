@@ -5,6 +5,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(100),
       allowNull: false
     },
+    logline: {
+      type: DataTypes.STRING(100),
+      allowNull: false
+    },
     description: {
       type: DataTypes.STRING(500),
       allowNull: false
