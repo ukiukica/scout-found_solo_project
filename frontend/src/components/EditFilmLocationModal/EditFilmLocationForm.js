@@ -10,12 +10,14 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
     const history = useHistory();
 
     const [title, setTitle] = useState(currentFilmLocation.title);
+    const [logline, setLogline] = useState(currentFilmLocation.logline)
     const [description, setDescription] = useState(currentFilmLocation.description);
     const [imageUrl, setImageUrl] = useState(currentFilmLocation.imageUrl);
     const [address, setAddress] = useState(currentFilmLocation.address);
     const [validationErrors, setValidationErrors] = useState([])
 
     const updateTitle = (e) => setTitle(e.target.value)
+    const updateLogline = (e) => setLogline(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updateImageUrl = (e) => setImageUrl(e.target.value)
     const updateAddress = (e) => setAddress(e.target.value)
@@ -26,12 +28,13 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
         const errors = []
 
         if (!title.length) errors.push("Title field is required")
+        if (!logline.length) errors.push("Logline is required")
         if (!description.length) errors.push("Description is required")
         if (!imageUrl.length) errors.push("Image URL is required")
         if (!address.length) errors.push("Address is required")
 
         setValidationErrors(errors)
-    }, [title, description, imageUrl, address])
+    }, [title, logline, description, imageUrl, address])
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +42,7 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
         const payload = {
             id:currentFilmLocationId,
             title,
+            logline,
             description,
             imageUrl,
             address
@@ -68,6 +72,15 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
                 name='title'
                 onChange={updateTitle}
                 value={title}
+                />
+            </label>
+            <label>
+                Logline
+                <input
+                type='text'
+                name='logline'
+                onChange={updateLogline}
+                value={logline}
                 />
             </label>
             <label>

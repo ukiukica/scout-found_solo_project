@@ -10,6 +10,7 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const history = useHistory();
 
     const [title, setTitle] = useState('');
+    const [logline, setLogline] = useState('')
     const [description, setDescription] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [address, setAddress] = useState('');
@@ -17,6 +18,7 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const [isLoaded, setIsLoaded] = useState(false)
 
     const updateTitle = (e) => setTitle(e.target.value)
+    const updateLogline = (e) => setLogline(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updateImageUrl = (e) => setImageUrl(e.target.value)
     const updateAddress = (e) => setAddress(e.target.value)
@@ -30,19 +32,21 @@ const CreateFilmLocationForm = ({closeModal}) => {
     useEffect(() => {
         const errors = []
 
-        if (!title.length) errors.push("Title field is required")
+        if (!title.length) errors.push("Title is required")
+        if (!logline.length) errors.push("Logline is required")
         if (!description.length) errors.push("Description is required")
         if (!imageUrl.length) errors.push("Image URL is required")
         if (!address.length) errors.push("Address is required")
 
         setValidationErrors(errors)
-    }, [title, description, imageUrl, address])
+    }, [title, logline, description, imageUrl, address])
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
         const payload = {
             title,
+            logline,
             description,
             imageUrl,
             address,
@@ -74,6 +78,15 @@ const CreateFilmLocationForm = ({closeModal}) => {
                 name='title'
                 onChange={updateTitle}
                 value={title}
+                />
+            </label>
+            <label>
+                Logline
+                <input
+                type='text'
+                name='logline'
+                onChange={updateLogline}
+                value={logline}
                 />
             </label>
             <label>

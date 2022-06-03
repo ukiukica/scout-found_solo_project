@@ -21,8 +21,8 @@ router.post(
     '/',
     // filmLocationsValidations.validateCreate,
     asyncHandler(async (req, res) => {
-        const {title, description, imageUrl, address, userId} = req.body;
-        const filmLocation = await db.FilmLocation.create({title, description, imageUrl, address, userId})
+        const {title, logline, description, imageUrl, address, userId} = req.body;
+        const filmLocation = await db.FilmLocation.create({title, logline, description, imageUrl, address, userId})
         // const id = await db.FilmLocation.create(req.body);
         // return res.redirect(`${req.baseUrl}/${id}`)
         return res.json(filmLocation)
@@ -32,9 +32,9 @@ router.post(
 router.put(
     '/:filmLocationId',
     asyncHandler(async (req, res) => {
-        const {title, description, imageUrl, address} = req.body;
+        const {title, logline, description, imageUrl, address} = req.body;
         const filmLocation = await db.FilmLocation.findByPk(parseInt(req.params.filmLocationId, 10))
-        filmLocation.update({title, description, imageUrl, address})
+        filmLocation.update({title, logline, description, imageUrl, address})
         return res.json(filmLocation)
     })
 )
