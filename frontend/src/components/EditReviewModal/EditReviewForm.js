@@ -6,7 +6,7 @@ import { editReview } from '../../store/reviews'
 
 import './EditReview.css'
 
-const EditReviewForm = ({ review, currentFilmLocation, hidden }) => {
+const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -28,11 +28,9 @@ const EditReviewForm = ({ review, currentFilmLocation, hidden }) => {
             id: review.id,
             content
         }
-        let editedReview = await dispatch(editReview(payload))
+        await dispatch(editReview(payload))
+        closeModal()
 
-        if (editedReview) {
-            history.push(`/filmLocations/${currentFilmLocation.id}`)
-        }
     }
 
     return (

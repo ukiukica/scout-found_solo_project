@@ -33,6 +33,7 @@ const CreateReview = ({currentFilmLocation}) => {
         }
         await dispatch(createReview(payload))
         setContent('')
+        
         // if (createdReview) {
         //     history.push(`/filmLocations/${currentFilmLocation.id}`)
         // }

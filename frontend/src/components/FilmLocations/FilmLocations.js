@@ -32,14 +32,6 @@ function FilmLocations() {
             <Link to={`/filmLocations/new`}>
                 <button>Add a Location</button>
             </Link>
-
-            <h2>Reviews</h2>
-            {reviewsArr.map((review) => (
-                <ul key={review.id}>
-                    <li>{review.User.username}</li>
-                    <li>{review.content}</li>
-                </ul>
-            ))}
             </div>
 
 
