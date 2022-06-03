@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFilmLocation } from '../../store/filmLocations';
 import Reviews from '../Reviews/Reviews.js'
+import EditFilmLocationModal from '../EditFilmLocationModal/EditFilmLocationModal';
 
 function SingleFilmLocation() {
     const dispatch = useDispatch();
@@ -44,13 +45,11 @@ function SingleFilmLocation() {
 
                     {currentFilmLocation.userId === userId && (
                         <>
+                            <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
                             <button
                                 onClick={onClick}
-                            >Delete
+                            >Delete Location
                             </button>
-                            <Link to={`/filmLocations/${currentFilmLocation.id}/edit`}>
-                                <button>Edit</button>
-                            </Link>
                         </>
                     )}
 

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Redirect } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-import { createFilmLocation, editFilmLocation } from '../../store/filmLocations';
-import * as sessionActions from "../../store/session";
+import { editFilmLocation } from '../../store/filmLocations';
 
-const EditFilmLocationForm = ({currentFilmLocation}) => {
+
+const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -43,12 +43,8 @@ const EditFilmLocationForm = ({currentFilmLocation}) => {
             imageUrl,
             address
         }
-        let editedFilmLocation = await dispatch(editFilmLocation(payload));
-
-        if (editedFilmLocation) {
-            history.push(`/filmLocations/${currentFilmLocation.id}`)
-            // <Redirect to={`/filmLocations/${currentFilmLocation.id}`} />
-        }
+        await dispatch(editFilmLocation(payload));
+        closeModal()
     }
 
     return (
