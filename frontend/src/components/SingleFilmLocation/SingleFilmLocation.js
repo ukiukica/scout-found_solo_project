@@ -16,7 +16,7 @@ function SingleFilmLocation() {
     console.log("CURRENT FILM LOCATION", currentFilmLocation)
 
     const reviews = useSelector(state => state.reviewsReducer)
-
+    let userId = useSelector((state) => state.session.user.id)
 
 
 
@@ -43,15 +43,19 @@ function SingleFilmLocation() {
                         <li><img src={currentFilmLocation.imageUrl} /></li>
                     </ul>
 
-                    <button
-                        onClick={onClick}
-                    >Delete
-                    </button>
-                    <Link to={`/filmLocations/${currentFilmLocation.id}/edit`}>
-                        <button>Edit</button>
-                    </Link>
+                    {currentFilmLocation.userId === userId && (
+                        <>
+                            <button
+                                onClick={onClick}
+                            >Delete
+                            </button>
+                            <Link to={`/filmLocations/${currentFilmLocation.id}/edit`}>
+                                <button>Edit</button>
+                            </Link>
+                        </>
+                    )}
 
-                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation}/>
+                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
                 </div>
             )}
 

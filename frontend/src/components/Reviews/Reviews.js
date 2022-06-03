@@ -1,45 +1,48 @@
 import React from 'react';
-import { Link, NavLink, Route, useParams, useHistory, Redirect } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import EditReviewForm from '../EditReviewModal/EditReviewForm';
-import CreateReviewForm from '../CreateReview/CreateReviewForm'
-import { removeReview } from "../../store/reviews"
+
+import CreateReviewModal from '../CreateReviewModal/CreateReviewModal'
 import EditReviewModal from '../EditReviewModal/Edit ReviewModal';
+import { removeReview } from "../../store/reviews"
 
 function Reviews({ reviews, currentFilmLocation }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    let userId = useSelector((state) => state.session.user.id)
+
     // const reviews = useSelector(state => state.reviewsReducer)
     const reviewsArr = Object.values(reviews)
+    const relatedReviews = reviewsArr.filter(review => review.filmLocationId === currentFilmLocation.id)
+    console.log("REVIEWS ARR NEW", relatedReviews)
 
     return (
         <div>
             <h2>Reviews</h2>
-            <button>Post a Review</button>
-            <CreateReviewForm currentFilmLocation={currentFilmLocation} />
+            <CreateReviewModal currentFilmLocation={currentFilmLocation} />
             {reviewsArr && (
                 <div>
-                    {reviewsArr.map((review) => (
+                    {relatedReviews.map((review) => (
                         <div key={review.id}>
                             <div>
                                 <ul>
                                     <li>{review?.User?.username}</li>
                                     <li>{review?.content}</li>
                                 </ul>
-                                <EditReviewModal review={review} currentFilmLocation={currentFilmLocation}/>
-                                <button
-                                    onClick={async (e) => {
-                                        e.preventDefault();
-                                        await dispatch(removeReview(review))
-                                    }}
-                                >Delete
-                                </button>
+                                {review.userId === userId && (
+                                    <>
+                                        <EditReviewModal review={review} currentFilmLocation={currentFilmLocation} />
+                                        <button
+                                            onClick={async (e) => {
+                                                e.preventDefault();
+                                                await dispatch(removeReview(review))
+                                            }}
+                                        >Delete
+                                        </button>
+                                    </>
+                                )}
                             </div>
-                            {/* <div>
-                                <EditReviewForm review={review} currentFilmLocation={currentFilmLocation} />
-                            </div> */}
                         </div>
 
                     ))}

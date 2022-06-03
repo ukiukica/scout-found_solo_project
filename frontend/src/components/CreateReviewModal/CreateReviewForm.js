@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import { createReview } from '../../store/reviews';
 
-const CreateReview = ({currentFilmLocation}) => {
+const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -32,8 +32,9 @@ const CreateReview = ({currentFilmLocation}) => {
 
         }
         await dispatch(createReview(payload))
-        setContent('')
-        
+        // setContent('')
+        closeModal()
+
         // if (createdReview) {
         //     history.push(`/filmLocations/${currentFilmLocation.id}`)
         // }
@@ -75,4 +76,4 @@ const CreateReview = ({currentFilmLocation}) => {
 
 }
 
-export default CreateReview
+export default CreateReviewForm
