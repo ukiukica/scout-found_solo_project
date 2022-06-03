@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { createFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
 
-const CreateFilmLocation = () => {
+const CreateFilmLocationForm = ({closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -48,12 +48,9 @@ const CreateFilmLocation = () => {
             address,
             userId
         };
+        await dispatch(createFilmLocation(payload));
+        closeModal()
 
-        let createdFilmLocation = await dispatch(createFilmLocation(payload));
-
-        if (createdFilmLocation) {
-            history.push('/filmLocations')
-        }
     }
 
     return (
@@ -117,4 +114,4 @@ const CreateFilmLocation = () => {
     )
 }
 
-export default CreateFilmLocation
+export default CreateFilmLocationForm

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import CreateFilmLocationModal from '../CreateFilmLocationModal/CreateFilmLocationModal';
 
 
 
@@ -10,13 +11,12 @@ function FilmLocations() {
     const filmLocations = useSelector(state => state.filmLocationsReducer)
     const filmLocationsArr = Object.values(filmLocations)
 
-    const reviews = useSelector(state => state.reviewsReducer)
-    const reviewsArr = Object.values(reviews)
+    // const reviews = useSelector(state => state.reviewsReducer)
+    // const reviewsArr = Object.values(reviews)
 
     return (
         <>
-            <h2>Film Locations</h2>
-            <div>
+            <h1>All Film Locations</h1>
             {filmLocationsArr.map((filmLocation) => (
                 <div key={filmLocation.id}>
                     <img src={filmLocation.imageUrl}/>
@@ -24,10 +24,7 @@ function FilmLocations() {
                     <p>*film location logline goes here*</p>
                 </div>
             ))}
-            <Link to={`/filmLocations/new`}>
-                <button>Add a Location</button>
-            </Link>
-            </div>
+            <CreateFilmLocationModal />
         </>
     )
 }
