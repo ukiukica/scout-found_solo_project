@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 function SplashPage() {
   const sessionUser = useSelector((state) => state.session?.user);
@@ -9,7 +9,12 @@ function SplashPage() {
   if (sessionUser) return <Redirect to="/filmLocations" />;
 
     return (
-        <h1>WELCOME</h1>
+        <>
+        <h2>Find your film set.</h2>
+        <Link to="/filmLocations">
+        <button>Browse Locations</button>
+        </Link>
+        </>
     )
 }
 
