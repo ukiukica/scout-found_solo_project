@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch, useParams } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import SignupFormPage from "./components/SignupFormPage/SignUpForm";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import FilmLocations from "./components/FilmLocations";
@@ -10,6 +10,7 @@ import { getFilmLocations } from './store/filmLocations'
 import SingleFilmLocation from "./components/SingleFilmLocation/SingleFilmLocation"
 // import EditFilmLocation from "./components/EditFilmLocationForm/EditFilmLocation";
 import { getReviews } from "./store/reviews";
+import SplashPage from "./components/SplashPage/SplashPage";
 
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path= '/'>
+            <SplashPage />
+          </Route>
           <Route path="/signup">
             <SignupFormPage />
           </Route>

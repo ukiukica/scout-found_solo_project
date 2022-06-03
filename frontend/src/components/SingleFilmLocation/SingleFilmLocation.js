@@ -14,11 +14,10 @@ function SingleFilmLocation() {
     const { filmLocationId } = params
     const filmLocations = useSelector(state => state.filmLocationsReducer)
     const currentFilmLocation = filmLocations[filmLocationId]
-    console.log("CURRENT FILM LOCATION", currentFilmLocation)
 
     const reviews = useSelector(state => state.reviewsReducer)
-    let userId = useSelector((state) => state.session.user.id)
 
+    let userId = useSelector((state) => state.session.user?.id)
 
 
     const onClick = async (e) => {
@@ -36,6 +35,10 @@ function SingleFilmLocation() {
         <div>
             {currentFilmLocation && reviews && (
                 <div>
+                    <Link to='/filmLocations'>
+                    <button>Back to Film Locations</button>
+                    </Link>
+
                     <div id='image-div'>
                         <img src={currentFilmLocation.imageUrl} />
                     </div>

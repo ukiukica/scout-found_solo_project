@@ -7,6 +7,7 @@ import CreateFilmLocationModal from '../CreateFilmLocationModal/CreateFilmLocati
 
 
 function FilmLocations() {
+    const sessionUser = useSelector(state => state.session.user);
 
     const filmLocations = useSelector(state => state.filmLocationsReducer)
     const filmLocationsArr = Object.values(filmLocations)
@@ -19,12 +20,14 @@ function FilmLocations() {
             <h1>All Film Locations</h1>
             {filmLocationsArr.map((filmLocation) => (
                 <div key={filmLocation.id}>
-                    <img src={filmLocation.imageUrl}/>
+                    <img src={filmLocation.imageUrl} />
                     <h3><Link to={`/filmLocations/${filmLocation.id}`}>{filmLocation.title}</Link></h3>
                     <p>*film location logline goes here*</p>
                 </div>
             ))}
-            <CreateFilmLocationModal />
+            {sessionUser &&
+                <CreateFilmLocationModal />
+            }
         </>
     )
 }

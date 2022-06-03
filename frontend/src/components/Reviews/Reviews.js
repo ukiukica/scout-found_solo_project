@@ -10,7 +10,8 @@ function Reviews({ reviews, currentFilmLocation }) {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    let userId = useSelector((state) => state.session.user.id)
+    const sessionUser = useSelector(state => state.session.user);
+    let userId = useSelector((state) => state.session.user?.id)
 
     // const reviews = useSelector(state => state.reviewsReducer)
     const reviewsArr = Object.values(reviews)
@@ -20,7 +21,11 @@ function Reviews({ reviews, currentFilmLocation }) {
     return (
         <div>
             <h2>Reviews</h2>
-            <CreateReviewModal currentFilmLocation={currentFilmLocation} />
+            {sessionUser ?
+                <CreateReviewModal currentFilmLocation={currentFilmLocation} />
+                : <h3>Log in to leave a review</h3>
+            }
+
             {reviewsArr && (
                 <div>
                     {relatedReviews.map((review) => (
