@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { editReview } from '../../store/reviews'
+import * as sessionActions from "../../store/session";
+import { createReview } from '../../store/reviews';
 
-import './EditReview.css'
-
-const EditReviewForm = ({ review, currentFilmLocation, hidden }) => {
+const CreateReview = ({currentFilmLocation}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [content, setContent] = useState(review.content)
+    let userId = useSelector((state) => state.session.user.id)
+
+    const [content, setContent] = useState("")
     const [validationErrors, setValidationErrors] = useState([])
 
     useEffect(() => {
@@ -25,23 +26,24 @@ const EditReviewForm = ({ review, currentFilmLocation, hidden }) => {
         e.preventDefault();
 
         const payload = {
-            id: review.id,
-            content
-        }
-        let editedReview = await dispatch(editReview(payload))
+            content,
+            userId,
+            filmLocationId: currentFilmLocation.id
 
-        if (editedReview) {
-            history.push(`/filmLocations/${currentFilmLocation.id}`)
         }
+        await dispatch(createReview(payload))
+        setContent('')
+        // if (createdReview) {
+        //     history.push(`/filmLocations/${currentFilmLocation.id}`)
+        // }
     }
 
     return (
-        // <div className={hidden ? 'edit-form is-hidden' : 'edit-form'}>
         <div>
             <form
                 onSubmit={onSubmit}
             >
-                <h2>Edit Your Post</h2>
+                <h2>Post a Review</h2>
                 {validationErrors.length > 0 && (
                     <div>
                         <ul className="errors">
@@ -69,6 +71,7 @@ const EditReviewForm = ({ review, currentFilmLocation, hidden }) => {
             </form>
         </div>
     )
+
 }
 
-export default EditReviewForm
+export default CreateReview

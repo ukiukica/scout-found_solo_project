@@ -15,9 +15,8 @@ function SingleFilmLocation() {
     const currentFilmLocation = filmLocations[filmLocationId]
     console.log("CURRENT FILM LOCATION", currentFilmLocation)
 
-
     const reviews = useSelector(state => state.reviewsReducer)
-    const reviewsArr = Object.values(reviews)
+
 
 
 
@@ -35,7 +34,7 @@ function SingleFilmLocation() {
     return (
         <div>
             <h1>Single Film Location</h1>
-            {currentFilmLocation && (
+            {currentFilmLocation && reviews && (
                 <div>
                     <ul>
                         <li>{currentFilmLocation.title}</li>
@@ -52,9 +51,9 @@ function SingleFilmLocation() {
                         <button>Edit</button>
                     </Link>
 
+                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation}/>
                 </div>
             )}
-            <Reviews />
 
         </div>
     )

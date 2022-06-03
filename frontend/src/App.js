@@ -54,6 +54,9 @@ function App() {
           <Route path = '/filmLocations/:filmLocationId'>
             <SingleFilmLocation />
           </Route>
+          {/* <Route>
+            <CreateReview />
+          </Route> */}
         </Switch>
       )}
     </>
