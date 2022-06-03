@@ -1,0 +1,9 @@
+.edit-form {
+    background-color: orange;
+}
+
+.edit-form.is-hidden {
+/* transform: scale(0); */
+display: none;
+
+}

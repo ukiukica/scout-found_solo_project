@@ -1,26 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, useParams, Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import { createFilmLocation, editFilmLocation } from '../../store/filmLocations';
+import { createFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
 
-const EditFilmLocationForm = ({currentFilmLocation}) => {
+const CreateFilmLocationForm = ({closeModal}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const [title, setTitle] = useState(currentFilmLocation.title);
-    const [description, setDescription] = useState(currentFilmLocation.description);
-    const [imageUrl, setImageUrl] = useState(currentFilmLocation.imageUrl);
-    const [address, setAddress] = useState(currentFilmLocation.address);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [address, setAddress] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
+    const [isLoaded, setIsLoaded] = useState(false)
 
     const updateTitle = (e) => setTitle(e.target.value)
     const updateDescription = (e) => setDescription(e.target.value)
     const updateImageUrl = (e) => setImageUrl(e.target.value)
     const updateAddress = (e) => setAddress(e.target.value)
 
-    const currentFilmLocationId = currentFilmLocation.id;
+    useEffect(() => {
+        dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    }, [dispatch]);
+
+    let userId = useSelector((state) => state.session.user.id)
 
     useEffect(() => {
         const errors = []
@@ -37,25 +42,22 @@ const EditFilmLocationForm = ({currentFilmLocation}) => {
         e.preventDefault();
 
         const payload = {
-            id:currentFilmLocationId,
             title,
             description,
             imageUrl,
-            address
-        }
-        let editedFilmLocation = await dispatch(editFilmLocation(payload));
+            address,
+            userId
+        };
+        await dispatch(createFilmLocation(payload));
+        closeModal()
 
-        if (editedFilmLocation) {
-            history.push(`/filmLocations/${currentFilmLocation.id}`)
-            // <Redirect to={`/filmLocations/${currentFilmLocation.id}`} />
-        }
     }
 
     return (
         <form
             onSubmit={onSubmit}
         >
-            <h2>Edit Film Location</h2>
+            <h2>Add a Film Location</h2>
             {validationErrors.length > 0 && (
                 <div>
                     <ul className="errors">
@@ -106,14 +108,10 @@ const EditFilmLocationForm = ({currentFilmLocation}) => {
             type='submit'
             disabled={!!validationErrors.length}
             >
-                Submit
+                Add
             </button>
         </form>
-
     )
-
-
-
 }
 
-export default EditFilmLocationForm
+export default CreateFilmLocationForm

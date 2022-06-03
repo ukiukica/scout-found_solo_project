@@ -1,35 +1,38 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignUpModal from '../SignupFormPage/SignUpModal';
+import { demouser } from '../../store/session';
 import './Navigation.css';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
-  let sessionLinks;
-  if (sessionUser) {
-    sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
-  } else {
-    sessionLinks = (
-      <>
-        <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
-      </>
-    );
+  const dispatch = useDispatch();
+
+  const demoOnClick = async (e) => {
+    e.preventDefault();
+    await dispatch(demouser())
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-        {isLoaded && sessionLinks}
-      </li>
-    </ul>
-  );
+    (sessionUser ?
+      <>
+        <ProfileButton user={sessionUser} />
+      </> :
+      <>
+        <LoginFormModal />
+        <SignUpModal />
+        <button
+          onClick={demoOnClick}
+        >Demo
+        </button>
+      </>
+    )
+  )
 }
+
 
 export default Navigation;
