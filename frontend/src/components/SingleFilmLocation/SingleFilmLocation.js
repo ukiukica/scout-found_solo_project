@@ -33,15 +33,14 @@ function SingleFilmLocation() {
 
     return (
         <div>
-            <h1>Single Film Location</h1>
             {currentFilmLocation && reviews && (
                 <div>
-                    <ul>
-                        <li>{currentFilmLocation.title}</li>
-                        <li>{currentFilmLocation.description}</li>
-                        <li>{currentFilmLocation.address}</li>
-                        <li><img src={currentFilmLocation.imageUrl} /></li>
-                    </ul>
+                    <div id='image-div'>
+                        <img src={currentFilmLocation.imageUrl} />
+                    </div>
+                    <h1>{currentFilmLocation.title}</h1>
+                    <p>{currentFilmLocation.description}</p>
+                    <p>Address: {currentFilmLocation.address}</p>
 
                     {currentFilmLocation.userId === userId && (
                         <>

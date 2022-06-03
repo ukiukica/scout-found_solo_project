@@ -26,10 +26,9 @@ function Reviews({ reviews, currentFilmLocation }) {
                     {relatedReviews.map((review) => (
                         <div key={review.id}>
                             <div>
-                                <ul>
-                                    <li>{review?.User?.username}</li>
-                                    <li>{review?.content}</li>
-                                </ul>
+                                <h4>{review?.User?.username}</h4>
+                                <p>{review?.content}</p>
+
                                 {review.userId === userId && (
                                     <>
                                         <EditReviewModal review={review} currentFilmLocation={currentFilmLocation} />
