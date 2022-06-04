@@ -6,12 +6,13 @@ import { editReview } from '../../store/reviews'
 
 import './EditReview.css'
 
-const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
+const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [content, setContent] = useState(review.content)
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     useEffect(() => {
         const errors = []
@@ -24,13 +25,17 @@ const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            id: review.id,
-            content
+        if (validationErrors.length) {
+            setShowErrors(true);
         }
-        await dispatch(editReview(payload))
-        closeModal()
-
+        else {
+            const payload = {
+                id: review.id,
+                content
+            }
+            await dispatch(editReview(payload))
+            closeModal()
+        }
     }
 
     return (
@@ -40,15 +45,15 @@ const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
                 onSubmit={onSubmit}
             >
                 <h2>Edit Your Post</h2>
-                {validationErrors.length > 0 && (
-                    <div>
-                        <ul className="errors">
-                            {validationErrors.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                {/* {validationErrors.length > 0 && ( */}
+                <div className={showErrors ? '' : 'hidden'}>
+                    <ul className="errors">
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+                {/* )} */}
                 <label>
                     Content
                     <input
@@ -60,7 +65,7 @@ const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
                 </label>
                 <button
                     type='submit'
-                    disabled={!!validationErrors.length}
+                    // disabled={!!validationErrors.length}
                 >
                     Submit
                 </button>

@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom';
 import { createFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
 
-const CreateFilmLocationForm = ({closeModal}) => {
+import './CreateFilmLocation.css'
+
+const CreateFilmLocationForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -15,6 +17,7 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const [imageUrl, setImageUrl] = useState('');
     const [address, setAddress] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
     const updateTitle = (e) => setTitle(e.target.value)
@@ -44,17 +47,21 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            title,
-            logline,
-            description,
-            imageUrl,
-            address,
-            userId
-        };
-        await dispatch(createFilmLocation(payload));
-        closeModal()
-
+        if (validationErrors.length) {
+            setShowErrors(true);
+        }
+        else {
+            const payload = {
+                title,
+                logline,
+                description,
+                imageUrl,
+                address,
+                userId
+            };
+            await dispatch(createFilmLocation(payload));
+            closeModal()
+        }
     }
 
     return (
@@ -62,64 +69,64 @@ const CreateFilmLocationForm = ({closeModal}) => {
             onSubmit={onSubmit}
         >
             <h2>Add a Film Location</h2>
-            {validationErrors.length > 0 && (
-                <div>
-                    <ul className="errors">
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+            {/* {validationErrors.length > 0 && ( */}
+            <div className={showErrors ? '' : 'hidden'}>
+                <ul className="errors">
+                    {validationErrors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </div>
+            {/* )} */}
             <label>
                 Title
                 <input
-                type='text'
-                name='title'
-                onChange={updateTitle}
-                value={title}
+                    type='text'
+                    name='title'
+                    onChange={updateTitle}
+                    value={title}
                 />
             </label>
             <label>
                 Logline
                 <input
-                type='text'
-                name='logline'
-                onChange={updateLogline}
-                value={logline}
+                    type='text'
+                    name='logline'
+                    onChange={updateLogline}
+                    value={logline}
                 />
             </label>
             <label>
                 Description
                 <input
-                type='text'
-                name='description'
-                onChange={updateDescription}
-                value={description}
+                    type='text'
+                    name='description'
+                    onChange={updateDescription}
+                    value={description}
                 />
             </label>
             <label>
                 Image URL
                 <input
-                type='text'
-                name='imageUrl'
-                onChange={updateImageUrl}
-                alt=""
-                value={imageUrl}
+                    type='text'
+                    name='imageUrl'
+                    onChange={updateImageUrl}
+                    alt=""
+                    value={imageUrl}
                 />
             </label>
             <label>
                 Address
                 <input
-                type='text'
-                name='address'
-                onChange={updateAddress}
-                value={address}
+                    type='text'
+                    name='address'
+                    onChange={updateAddress}
+                    value={address}
                 />
             </label>
             <button
-            type='submit'
-            disabled={!!validationErrors.length}
+                type='submit'
+                // disabled={!!validationErrors.length}
             >
                 Add
             </button>

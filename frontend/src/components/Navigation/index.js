@@ -18,7 +18,9 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    (sessionUser ?
+    <div id='navigation'>
+      <h3 id='logo'>Scout Found</h3>
+    {sessionUser ?
       <>
         <ProfileButton user={sessionUser} />
       </> :
@@ -30,7 +32,8 @@ function Navigation({ isLoaded }) {
         >Demo
         </button>
       </>
-    )
+    }
+    </div>
   )
 }
 

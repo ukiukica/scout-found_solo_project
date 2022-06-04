@@ -5,7 +5,9 @@ import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import { createReview } from '../../store/reviews';
 
-const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
+import './CreateReview.css'
+
+const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -13,6 +15,7 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
 
     const [content, setContent] = useState("")
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     useEffect(() => {
         const errors = []
@@ -25,19 +28,19 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            content,
-            userId,
-            filmLocationId: currentFilmLocation.id
-
+        if (validationErrors.length) {
+            setShowErrors(true);
         }
-        await dispatch(createReview(payload))
-        // setContent('')
-        closeModal()
+        else {
+            const payload = {
+                content,
+                userId,
+                filmLocationId: currentFilmLocation.id
 
-        // if (createdReview) {
-        //     history.push(`/filmLocations/${currentFilmLocation.id}`)
-        // }
+            }
+            await dispatch(createReview(payload))
+            closeModal()
+        }
     }
 
     return (
@@ -46,15 +49,15 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
                 onSubmit={onSubmit}
             >
                 <h2>Post a Review</h2>
-                {validationErrors.length > 0 && (
-                    <div>
-                        <ul className="errors">
-                            {validationErrors.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                {/* {validationErrors.length > 0 && ( */}
+                <div className={showErrors ? '' : 'hidden'}>
+                    <ul className="errors">
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+                {/* )} */}
                 <label>
                     Content
                     <input
@@ -66,7 +69,7 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
                 </label>
                 <button
                     type='submit'
-                    disabled={!!validationErrors.length}
+                    // disabled={!!validationErrors.length}
                 >
                     Submit
                 </button>
