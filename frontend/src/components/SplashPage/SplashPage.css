@@ -1,1 +1,13 @@
+#splash-img {
+z-index: -1;
+width:1503px;
+height: auto;
+}
 
+#text-and-button {
+z-index: 0;
+}
+
+#splash-body {
+display:flex;
+}

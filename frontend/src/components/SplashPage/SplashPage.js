@@ -10,12 +10,15 @@ function SplashPage() {
   if (sessionUser) return <Redirect to="/filmLocations" />;
 
     return (
-        <>
+      <div id='splash-body'>
+        <img id='splash-img' src='/images/projection_studio.jpg' />
+        <div id='text-and-button'>
         <h2>Find your film set.</h2>
         <Link to="/filmLocations">
         <button>Browse Locations</button>
         </Link>
-        </>
+        </div>
+        </div>
     )
 }
 

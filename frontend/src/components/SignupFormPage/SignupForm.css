@@ -1,3 +1,19 @@
 input {
     background-color: aqua;
 }
+
+.user-button {
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #eae0d5;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    color: #0a0908;
+    font-size: 15px;
+    transition: background-color 0.1s;
+
+}
+.user-button:hover {
+    background-color: #5e503f;
+    color:#eae0d5;
+}

@@ -19,19 +19,20 @@ function Navigation({ isLoaded }) {
 
   return (
     <div id='navigation'>
-      <h3 id='logo'>Scout Found</h3>
+      <img id='logo' src='/images/logo.png' />
     {sessionUser ?
-      <>
+      <div className='user-button-div'>
         <ProfileButton user={sessionUser} />
-      </> :
-      <>
+      </div> :
+      <div className='user-button-div'>
         <LoginFormModal />
         <SignUpModal />
         <button
+          className='user-button'
           onClick={demoOnClick}
         >Demo
         </button>
-      </>
+      </div>
     }
     </div>
   )
