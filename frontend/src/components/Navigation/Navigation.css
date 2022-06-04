@@ -25,6 +25,7 @@
     color: #0a0908;
     font-size: 15px;
     transition: background-color 0.1s;
+    border-color: #5e503f;
 
 }
 .user-button:hover {
