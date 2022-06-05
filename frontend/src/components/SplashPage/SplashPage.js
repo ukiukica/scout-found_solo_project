@@ -11,7 +11,7 @@ function SplashPage() {
 
     return (
       <div id='splash-body'>
-        <img id='splash-img' src='/images/projection_studio.jpg' />
+        <img id='splash-img' src='/images/projection-studio.jpg' />
         <div id='text-and-button'>
           <h2 id='splash-logline'>Find your film set.</h2>
           <Link to="/filmLocations">

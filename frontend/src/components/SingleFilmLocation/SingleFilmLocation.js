@@ -51,18 +51,18 @@ function SingleFilmLocation() {
                             <p id='single-location-desc' >{currentFilmLocation.description}</p>
                             <p id='single-location-address'>Address: {currentFilmLocation.address}</p>
 
-                        {currentFilmLocation.userId === userId && (
-                            <div id='location-buttons-div'>
-                                <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
-                                <button className='user-button'
-                                    onClick={onClick}
+                            {currentFilmLocation.userId === userId && (
+                                <div id='location-buttons-div'>
+                                    <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
+                                    <button className='user-button'
+                                        onClick={onClick}
                                     >Delete Location
-                                </button>
-                            </div>
-                        )}
-                        </div>
+                                    </button>
+                                </div>
+                            )}
 
-                        <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
+                            <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
+                        </div>
                     </div>
                 </div>
             )}

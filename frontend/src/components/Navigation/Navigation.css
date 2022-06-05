@@ -70,8 +70,7 @@
 
 #profile-button {
     background-color: #eae0d5;
-    transition: background-color 0.1s;
-    /* transition: color 0.1s; */
+    transition: background-color 0.1s, color 0.1s;
     border-color: #5e503f;
     border-radius: 40px;
 }

@@ -13,11 +13,11 @@ module.exports = {
         allowNull: false
       },
       logline: {
-        type: Sequelize.STRING(100),
+        type: Sequelize.STRING(300),
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING(500),
+        type: Sequelize.STRING(2000),
         allowNull: false
       },
       imageUrl: {
