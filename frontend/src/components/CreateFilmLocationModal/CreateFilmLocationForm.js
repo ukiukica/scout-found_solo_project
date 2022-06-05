@@ -7,6 +7,7 @@ import * as sessionActions from "../../store/session";
 
 import './CreateFilmLocation.css'
 import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
 const CreateFilmLocationForm = ({ closeModal }) => {
     const dispatch = useDispatch();
@@ -66,11 +67,10 @@ const CreateFilmLocationForm = ({ closeModal }) => {
     }
 
     return (
-        <form
+        <form className="forms"
             onSubmit={onSubmit}
         >
-            <h2>Add a Film Location</h2>
-            {/* {validationErrors.length > 0 && ( */}
+            <h2 id='add-location-title' >Add a Film Location</h2>
             <div className={showErrors ? '' : 'hidden'}>
                 <ul className="errors">
                     {validationErrors.map(error => (
@@ -78,37 +78,41 @@ const CreateFilmLocationForm = ({ closeModal }) => {
                     ))}
                 </ul>
             </div>
-            {/* )} */}
-            <label>
+            <div className='form-field'>
+            <label className='form-label'>
                 Title
                 <input
+                    className='form-input'
                     type='text'
                     name='title'
                     onChange={updateTitle}
                     value={title}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Logline
                 <input
+                    className='form-input'
                     type='text'
                     name='logline'
                     onChange={updateLogline}
                     value={logline}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Description
                 <input
+                    className='form-input'
                     type='text'
                     name='description'
                     onChange={updateDescription}
                     value={description}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Image URL
                 <input
+                    className='form-input'
                     type='text'
                     name='imageUrl'
                     onChange={updateImageUrl}
@@ -116,16 +120,19 @@ const CreateFilmLocationForm = ({ closeModal }) => {
                     value={imageUrl}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Address
                 <input
+                    className='form-input'
                     type='text'
                     name='address'
                     onChange={updateAddress}
                     value={address}
                 />
             </label>
+            </div>
             <button
+                className='user-button'
                 type='submit'
                 // disabled={!!validationErrors.length}
             >

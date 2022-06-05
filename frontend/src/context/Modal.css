@@ -79,3 +79,8 @@
 .form-field {
   margin-bottom: 10%;
 }
+
+.errors {
+  color:rgb(160, 31, 31);
+  padding: 0px;
+}

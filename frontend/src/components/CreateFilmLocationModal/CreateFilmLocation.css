@@ -2,3 +2,10 @@
     display: none;
 }
 
+#add-location-title {
+    font-family: 'Courier New', Courier, monospace;
+    white-space: nowrap;
+    border-bottom: 1px solid #0a0908;
+    padding-bottom: 5px;
+    margin-bottom: 35px;
+}
