@@ -42,3 +42,8 @@
     display: flex;
     flex-direction: column;
 }
+
+#location-info {
+    padding-bottom: 4%;
+    border-bottom: 1px solid #f2ece6;
+}

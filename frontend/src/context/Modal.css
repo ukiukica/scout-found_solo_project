@@ -57,6 +57,8 @@
 .form-input {
   display:flex;
   flex-direction:column;
+  border-radius: 15px;
+  padding: 5px 10px;
   border: solid 2px #0a0908;
   width: 200px;
   height: 27px;
@@ -88,4 +90,24 @@
 .errors {
   color:rgb(160, 31, 31);
   padding: 0px;
+  margin-bottom: 15%;
+}
+
+.form-title {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+  border-bottom: 1px solid #0a0908;
+  padding-bottom: 5px;
+  margin-bottom: 35px;
+}
+
+.solo-textarea {
+  width: 300px;
+  height: 50px;
+  margin-bottom: 3%;
+  padding: 10px;
+}
+
+.textarea {
+  height: 50px;
 }

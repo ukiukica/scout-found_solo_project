@@ -7,3 +7,33 @@
 display: none;
 
 }
+
+#reviews-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+    font-size: 30px;
+}
+
+#single-review-div {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+    border: 1px solid #f2ece6;
+    max-width: fit-content;
+    padding: 15px;
+    border-radius: 25px;
+    margin: 2% 0 2% 0;
+    background-color: #22333b;
+}
+
+#review-date {
+    font-size: 10px;
+    margin-top: 0;
+}
+
+#review-username {
+    margin-bottom: 1.5%;
+}
+
+.user-button.review-button {
+    font-size: 10px;
+}

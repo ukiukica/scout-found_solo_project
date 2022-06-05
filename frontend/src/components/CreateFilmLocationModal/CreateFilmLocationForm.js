@@ -70,7 +70,7 @@ const CreateFilmLocationForm = ({ closeModal }) => {
         <form className="forms"
             onSubmit={onSubmit}
         >
-            <h2 id='add-location-title' >Add a Film Location</h2>
+            <h2 className='form-title' >Add a Film Location</h2>
             <div className={showErrors ? '' : 'hidden'}>
                 <ul className="errors">
                     {validationErrors.map(error => (
@@ -101,8 +101,8 @@ const CreateFilmLocationForm = ({ closeModal }) => {
             </label>
             <label className='form-label'>
                 Description
-                <input
-                    className='form-input'
+                <textarea
+                    className='form-input textarea'
                     type='text'
                     name='description'
                     onChange={updateDescription}

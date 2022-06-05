@@ -6,6 +6,8 @@ import * as sessionActions from "../../store/session";
 import { createReview } from '../../store/reviews';
 
 import './CreateReview.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
 const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
@@ -45,11 +47,10 @@ const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
 
     return (
         <div>
-            <form
+            <form className="forms"
                 onSubmit={onSubmit}
             >
-                <h2>Post a Review</h2>
-                {/* {validationErrors.length > 0 && ( */}
+                <h2 className='form-title'>Post a Review</h2>
                 <div className={showErrors ? '' : 'hidden'}>
                     <ul className="errors">
                         {validationErrors.map(error => (
@@ -57,17 +58,18 @@ const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
                         ))}
                     </ul>
                 </div>
-                {/* )} */}
                 <label>
-                    Content
-                    <input
+                    <textarea
+                        className='form-input solo-textarea'
                         type='text'
                         name='content'
+                        placeholder='Write something here...'
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
                     />
                 </label>
                 <button
+                    className='user-button'
                     type='submit'
                     // disabled={!!validationErrors.length}
                 >

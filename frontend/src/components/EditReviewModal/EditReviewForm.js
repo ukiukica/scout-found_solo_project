@@ -5,6 +5,8 @@ import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { editReview } from '../../store/reviews'
 
 import './EditReview.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
 const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
@@ -41,11 +43,10 @@ const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
     return (
         // <div className={hidden ? 'edit-form is-hidden' : 'edit-form'}>
         <div>
-            <form
+            <form className="forms"
                 onSubmit={onSubmit}
             >
-                <h2>Edit Your Post</h2>
-                {/* {validationErrors.length > 0 && ( */}
+                <h2 className='form-title'>Edit Your Post</h2>
                 <div className={showErrors ? '' : 'hidden'}>
                     <ul className="errors">
                         {validationErrors.map(error => (
@@ -53,10 +54,9 @@ const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
                         ))}
                     </ul>
                 </div>
-                {/* )} */}
                 <label>
-                    Content
-                    <input
+                    <textarea
+                        className='form-input solo-textarea'
                         type='text'
                         name='content'
                         onChange={(e) => setContent(e.target.value)}
@@ -64,8 +64,8 @@ const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
                     />
                 </label>
                 <button
+                    className='user-button'
                     type='submit'
-                    // disabled={!!validationErrors.length}
                 >
                     Submit
                 </button>

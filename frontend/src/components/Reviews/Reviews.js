@@ -6,6 +6,8 @@ import CreateReviewModal from '../CreateReviewModal/CreateReviewModal'
 import EditReviewModal from '../EditReviewModal/Edit ReviewModal';
 import { removeReview } from "../../store/reviews"
 
+import './Reviews.css'
+
 function Reviews({ reviews, currentFilmLocation }) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -20,24 +22,26 @@ function Reviews({ reviews, currentFilmLocation }) {
 
     return (
         <div>
-            <h2>Reviews</h2>
+            <h2 id='reviews-title'>Reviews</h2>
             {sessionUser ?
                 <CreateReviewModal currentFilmLocation={currentFilmLocation} />
                 : <h3>Log in to leave a review</h3>
             }
 
             {reviewsArr && (
-                <div>
+                <div id='review-container'>
                     {relatedReviews.map((review) => (
-                        <div key={review.id}>
+                        <div id='single-review-div' key={review.id}>
                             <div>
-                                <h4>{review?.User?.username}</h4>
+                                <h4 id='review-username'>{review?.User?.username}</h4>
+                                <p id='review-date'>{review?.createdAt}</p>
                                 <p>{review?.content}</p>
 
                                 {review.userId === userId && (
                                     <>
                                         <EditReviewModal review={review} currentFilmLocation={currentFilmLocation} />
                                         <button
+                                            className='user-button review-button'
                                             onClick={async (e) => {
                                                 e.preventDefault();
                                                 await dispatch(removeReview(review))

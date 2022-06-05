@@ -39,31 +39,31 @@ function SingleFilmLocation() {
             {currentFilmLocation && reviews && (
                 <div>
                     <Link to='/filmLocations'>
-                    <button className='user-button' id='back-button'>Back to Film Locations</button>
+                        <button className='user-button' id='back-button'>Back to Film Locations</button>
                     </Link>
                     <div id='single-film-location'>
-                    <div id='image-div'>
-                        <img id='main-image' src={currentFilmLocation.imageUrl} />
-                    </div>
-                    <div id='location-info'>
-                    <h1 id='single-location-title' >{currentFilmLocation.title}</h1>
-                    <p id='single-location-logline' >{currentFilmLocation.logline}</p>
-                    <p id='single-location-desc' >{currentFilmLocation.description}</p>
-                    <p id='single-location-address'>Address: {currentFilmLocation.address}</p>
-                    </div>
+                        <div id='image-div'>
+                            <img id='main-image' src={currentFilmLocation.imageUrl} />
+                        </div>
+                        <div id='location-info'>
+                            <h1 id='single-location-title' >{currentFilmLocation.title}</h1>
+                            <p id='single-location-logline' >{currentFilmLocation.logline}</p>
+                            <p id='single-location-desc' >{currentFilmLocation.description}</p>
+                            <p id='single-location-address'>Address: {currentFilmLocation.address}</p>
 
-                    {currentFilmLocation.userId === userId && (
-                        <>
-                            <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
-                            <button className='user-button'
-                                onClick={onClick}
-                            >Delete Location
-                            </button>
-                        </>
-                    )}
+                        {currentFilmLocation.userId === userId && (
+                            <div id='location-buttons-div'>
+                                <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
+                                <button className='user-button'
+                                    onClick={onClick}
+                                    >Delete Location
+                                </button>
+                            </div>
+                        )}
+                        </div>
 
-                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
-                </div>
+                        <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
+                    </div>
                 </div>
             )}
 
