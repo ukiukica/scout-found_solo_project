@@ -14,6 +14,7 @@
 
 .user-button-div {
     margin-right: 30px;
+    white-space: nowrap;
 }
 
 .user-button {
