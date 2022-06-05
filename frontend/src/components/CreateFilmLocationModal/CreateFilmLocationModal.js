@@ -8,7 +8,7 @@ function CreateFilmLocationModal () {
 
     return (
         <>
-          <button onClick={() => setShowModal(true)}>Add a Film Location</button>
+          <button className='user-button' onClick={() => setShowModal(true)}>Add a Film Location</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <CreateFilmLocationForm closeModal={() => setShowModal(false)}/>

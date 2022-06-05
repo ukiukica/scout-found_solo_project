@@ -23,6 +23,8 @@ justify-content: center;
 
 #splash-logline {
     font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 .user-button {

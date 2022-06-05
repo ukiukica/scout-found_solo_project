@@ -6,6 +6,7 @@ import { createFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
 
 import './CreateFilmLocation.css'
+import '../Navigation/Navigation.css'
 
 const CreateFilmLocationForm = ({ closeModal }) => {
     const dispatch = useDispatch();

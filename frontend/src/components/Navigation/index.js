@@ -21,7 +21,7 @@ function Navigation({ isLoaded }) {
     <div id='navigation'>
       <img id='logo' src='/images/logo.png' />
     {sessionUser ?
-      <div className='user-button-div'>
+      <div className='profile-button'>
         <ProfileButton user={sessionUser} />
       </div> :
       <div className='user-button-div'>
