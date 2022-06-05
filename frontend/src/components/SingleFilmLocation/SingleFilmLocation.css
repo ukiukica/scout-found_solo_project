@@ -8,10 +8,11 @@
     height: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 3%;
 }
 
 #main-image {
-    width: 700px;
+    width: 1000px;
 }
 
 #single-location-title {
@@ -27,7 +28,7 @@
 }
 
 #single-location-desc {
-    margin-top: 4%;
+    margin-top: 2%;
     font-family: 'Courier New', Courier, monospace;
     color: #f2ece6;
 }
@@ -46,4 +47,6 @@
 #location-info {
     padding-bottom: 4%;
     border-bottom: 1px solid #f2ece6;
+    margin: 0 10% 0 10%;
+
 }

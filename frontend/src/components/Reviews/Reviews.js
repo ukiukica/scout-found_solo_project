@@ -25,7 +25,7 @@ function Reviews({ reviews, currentFilmLocation }) {
             <h2 id='reviews-title'>Reviews</h2>
             {sessionUser ?
                 <CreateReviewModal currentFilmLocation={currentFilmLocation} />
-                : <h3>Log in to leave a review</h3>
+                : <h3 className='not-logged-in'>Log in to leave a review!</h3>
             }
 
             {reviewsArr && (

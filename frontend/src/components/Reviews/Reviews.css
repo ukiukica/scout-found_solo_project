@@ -9,6 +9,7 @@ display: none;
 }
 
 #reviews-title {
+    margin-top: 5%;
     font-family: 'Courier New', Courier, monospace;
     color: #f2ece6;
     font-size: 30px;
@@ -31,9 +32,14 @@ display: none;
 }
 
 #review-username {
-    margin-bottom: 1.5%;
+    margin-bottom: 5px;
 }
 
 .user-button.review-button {
     font-size: 10px;
+}
+
+.not-logged-in {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ba844e;
 }

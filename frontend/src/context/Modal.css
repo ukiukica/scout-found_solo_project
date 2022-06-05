@@ -42,8 +42,7 @@
     color:#eae0d5;
     background-color: #5e503f;
     font-size: 15px;
-    transition: background-color 0.1s;
-    transition: box-shadow 0.1s;
+    transition: background-color 0.1s, box-shadow 0.1s;
     border-color: #5e503f;
     width: 100px;
     box-shadow: 1px 1px 2px rgb(0, 0, 0);
