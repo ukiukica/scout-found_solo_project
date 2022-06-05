@@ -6,6 +6,9 @@ import { removeFilmLocation } from '../../store/filmLocations';
 import Reviews from '../Reviews/Reviews.js'
 import EditFilmLocationModal from '../EditFilmLocationModal/EditFilmLocationModal';
 
+import './SingleFilmLocation.css'
+import '../Navigation/Navigation.css'
+
 function SingleFilmLocation() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -36,28 +39,31 @@ function SingleFilmLocation() {
             {currentFilmLocation && reviews && (
                 <div>
                     <Link to='/filmLocations'>
-                    <button>Back to Film Locations</button>
+                        <button className='user-button' id='back-button'>Back to Film Locations</button>
                     </Link>
+                    <div id='single-film-location'>
+                        <div id='image-div'>
+                            <img id='main-image' src={currentFilmLocation.imageUrl} />
+                        </div>
+                        <div id='location-info'>
+                            <h1 id='single-location-title' >{currentFilmLocation.title}</h1>
+                            <p id='single-location-logline' >{currentFilmLocation.logline}</p>
+                            <p id='single-location-desc' >{currentFilmLocation.description}</p>
+                            <p id='single-location-address'>Address: {currentFilmLocation.address}</p>
 
-                    <div id='image-div'>
-                        <img src={currentFilmLocation.imageUrl} />
+                        {currentFilmLocation.userId === userId && (
+                            <div id='location-buttons-div'>
+                                <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
+                                <button className='user-button'
+                                    onClick={onClick}
+                                    >Delete Location
+                                </button>
+                            </div>
+                        )}
+                        </div>
+
+                        <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
                     </div>
-                    <h1>{currentFilmLocation.title}</h1>
-                    <p>{currentFilmLocation.logline}</p>
-                    <p>{currentFilmLocation.description}</p>
-                    <p>Address: {currentFilmLocation.address}</p>
-
-                    {currentFilmLocation.userId === userId && (
-                        <>
-                            <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
-                            <button
-                                onClick={onClick}
-                            >Delete Location
-                            </button>
-                        </>
-                    )}
-
-                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
                 </div>
             )}
 

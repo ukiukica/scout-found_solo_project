@@ -1,3 +1,31 @@
+#splash-img {
+z-index: -1;
+width:100%;
+height: auto;
+
+}
+
+#text-and-button {
+display: flex;
+flex-direction: column;
+position: absolute;
+margin-top: 19%;
+white-space: nowrap;
+align-items: center;
+
+}
+
+#splash-body {
+display:flex;
+justify-content: center;
+
+}
+
+#splash-logline {
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
 
 .user-button {
     margin: 5px;

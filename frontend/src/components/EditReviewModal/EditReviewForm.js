@@ -5,13 +5,16 @@ import { useHistory, useParams, Redirect } from 'react-router-dom';
 import { editReview } from '../../store/reviews'
 
 import './EditReview.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
-const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
+const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const [content, setContent] = useState(review.content)
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     useEffect(() => {
         const errors = []
@@ -24,34 +27,36 @@ const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            id: review.id,
-            content
+        if (validationErrors.length) {
+            setShowErrors(true);
         }
-        await dispatch(editReview(payload))
-        closeModal()
-
+        else {
+            const payload = {
+                id: review.id,
+                content
+            }
+            await dispatch(editReview(payload))
+            closeModal()
+        }
     }
 
     return (
         // <div className={hidden ? 'edit-form is-hidden' : 'edit-form'}>
         <div>
-            <form
+            <form className="forms"
                 onSubmit={onSubmit}
             >
-                <h2>Edit Your Post</h2>
-                {validationErrors.length > 0 && (
-                    <div>
-                        <ul className="errors">
-                            {validationErrors.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                <h2 className='form-title'>Edit Your Post</h2>
+                <div className={showErrors ? '' : 'hidden'}>
+                    <ul className="errors">
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
                 <label>
-                    Content
-                    <input
+                    <textarea
+                        className='form-input solo-textarea'
                         type='text'
                         name='content'
                         onChange={(e) => setContent(e.target.value)}
@@ -59,8 +64,8 @@ const EditReviewForm = ({review, currentFilmLocation, closeModal}) => {
                     />
                 </label>
                 <button
+                    className='user-button'
                     type='submit'
-                    disabled={!!validationErrors.length}
                 >
                     Submit
                 </button>

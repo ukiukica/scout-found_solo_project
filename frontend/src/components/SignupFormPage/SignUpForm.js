@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
+import '../../context/Modal.css'
 
 function SignupForm() {
   const dispatch = useDispatch();
@@ -30,47 +31,59 @@ function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
+    <form className="forms" onSubmit={handleSubmit}>
+      <ul className='form-errors'>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
+      <div className='form-field'>
+      <label className='form-label'>
         Email
         <input
+          className='form-input'
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
       </label>
-      <label>
+      </div>
+      <div className='form-field'>
+      <label className='form-label'>
         Username
         <input
+          className='form-input'
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
         />
       </label>
-      <label>
+      </div>
+      <div className='form-field'>
+      <label className='form-label'>
         Password
         <input
+          className='form-input'
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label>
+      </div>
+      <div className='form-field'>
+      <label className='form-label'>
         Confirm Password
         <input
+          className='form-input'
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      </div>
+      <button className='user-button' type="submit">Sign Up</button>
     </form>
   );
 }

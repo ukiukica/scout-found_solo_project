@@ -5,7 +5,11 @@ import { useHistory } from 'react-router-dom';
 import * as sessionActions from "../../store/session";
 import { createReview } from '../../store/reviews';
 
-const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
+import './CreateReview.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
+
+const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -13,6 +17,7 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
 
     const [content, setContent] = useState("")
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     useEffect(() => {
         const errors = []
@@ -25,48 +30,48 @@ const CreateReviewForm = ({currentFilmLocation, closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            content,
-            userId,
-            filmLocationId: currentFilmLocation.id
-
+        if (validationErrors.length) {
+            setShowErrors(true);
         }
-        await dispatch(createReview(payload))
-        // setContent('')
-        closeModal()
+        else {
+            const payload = {
+                content,
+                userId,
+                filmLocationId: currentFilmLocation.id
 
-        // if (createdReview) {
-        //     history.push(`/filmLocations/${currentFilmLocation.id}`)
-        // }
+            }
+            await dispatch(createReview(payload))
+            closeModal()
+        }
     }
 
     return (
         <div>
-            <form
+            <form className="forms"
                 onSubmit={onSubmit}
             >
-                <h2>Post a Review</h2>
-                {validationErrors.length > 0 && (
-                    <div>
-                        <ul className="errors">
-                            {validationErrors.map(error => (
-                                <li key={error}>{error}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
+                <h2 className='form-title'>Post a Review</h2>
+                <div className={showErrors ? '' : 'hidden'}>
+                    <ul className="errors">
+                        {validationErrors.map(error => (
+                            <li key={error}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
                 <label>
-                    Content
-                    <input
+                    <textarea
+                        className='form-input solo-textarea'
                         type='text'
                         name='content'
+                        placeholder='Write something here...'
                         onChange={(e) => setContent(e.target.value)}
                         value={content}
                     />
                 </label>
                 <button
+                    className='user-button'
                     type='submit'
-                    disabled={!!validationErrors.length}
+                    // disabled={!!validationErrors.length}
                 >
                     Submit
                 </button>

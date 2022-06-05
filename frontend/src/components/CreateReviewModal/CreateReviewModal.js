@@ -7,7 +7,7 @@ function CreateReviewModal ({currentFilmLocation}) {
 
     return (
         <>
-          <button onClick={() => setShowModal(true)}>Post a Review</button>
+          <button className='user-button' onClick={() => setShowModal(true)}>Post a Review</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <CreateReviewForm closeModal={() => setShowModal(false)} currentFilmLocation={currentFilmLocation}/>

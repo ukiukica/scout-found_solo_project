@@ -5,7 +5,11 @@ import { useHistory } from 'react-router-dom';
 import { createFilmLocation } from '../../store/filmLocations';
 import * as sessionActions from "../../store/session";
 
-const CreateFilmLocationForm = ({closeModal}) => {
+import './CreateFilmLocation.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
+
+const CreateFilmLocationForm = ({ closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -15,6 +19,7 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const [imageUrl, setImageUrl] = useState('');
     const [address, setAddress] = useState('');
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
     const [isLoaded, setIsLoaded] = useState(false)
 
     const updateTitle = (e) => setTitle(e.target.value)
@@ -44,82 +49,92 @@ const CreateFilmLocationForm = ({closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            title,
-            logline,
-            description,
-            imageUrl,
-            address,
-            userId
-        };
-        await dispatch(createFilmLocation(payload));
-        closeModal()
-
+        if (validationErrors.length) {
+            setShowErrors(true);
+        }
+        else {
+            const payload = {
+                title,
+                logline,
+                description,
+                imageUrl,
+                address,
+                userId
+            };
+            await dispatch(createFilmLocation(payload));
+            closeModal()
+        }
     }
 
     return (
-        <form
+        <form className="forms"
             onSubmit={onSubmit}
         >
-            <h2>Add a Film Location</h2>
-            {validationErrors.length > 0 && (
-                <div>
-                    <ul className="errors">
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-            <label>
+            <h2 className='form-title' >Add a Film Location</h2>
+            <div className={showErrors ? '' : 'hidden'}>
+                <ul className="errors">
+                    {validationErrors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </div>
+            <div className='form-field'>
+            <label className='form-label'>
                 Title
                 <input
-                type='text'
-                name='title'
-                onChange={updateTitle}
-                value={title}
+                    className='form-input'
+                    type='text'
+                    name='title'
+                    onChange={updateTitle}
+                    value={title}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Logline
                 <input
-                type='text'
-                name='logline'
-                onChange={updateLogline}
-                value={logline}
+                    className='form-input'
+                    type='text'
+                    name='logline'
+                    onChange={updateLogline}
+                    value={logline}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Description
-                <input
-                type='text'
-                name='description'
-                onChange={updateDescription}
-                value={description}
+                <textarea
+                    className='form-input textarea'
+                    type='text'
+                    name='description'
+                    onChange={updateDescription}
+                    value={description}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Image URL
                 <input
-                type='text'
-                name='imageUrl'
-                onChange={updateImageUrl}
-                alt=""
-                value={imageUrl}
+                    className='form-input'
+                    type='text'
+                    name='imageUrl'
+                    onChange={updateImageUrl}
+                    alt=""
+                    value={imageUrl}
                 />
             </label>
-            <label>
+            <label className='form-label'>
                 Address
                 <input
-                type='text'
-                name='address'
-                onChange={updateAddress}
-                value={address}
+                    className='form-input'
+                    type='text'
+                    name='address'
+                    onChange={updateAddress}
+                    value={address}
                 />
             </label>
+            </div>
             <button
-            type='submit'
-            disabled={!!validationErrors.length}
+                className='user-button'
+                type='submit'
+                // disabled={!!validationErrors.length}
             >
                 Add
             </button>

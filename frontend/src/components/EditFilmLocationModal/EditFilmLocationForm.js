@@ -4,8 +4,11 @@ import { useHistory } from 'react-router-dom';
 
 import { editFilmLocation } from '../../store/filmLocations';
 
+import './EditFilmLocation.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
-const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
+const EditFilmLocationForm = ({ currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -15,6 +18,7 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
     const [imageUrl, setImageUrl] = useState(currentFilmLocation.imageUrl);
     const [address, setAddress] = useState(currentFilmLocation.address);
     const [validationErrors, setValidationErrors] = useState([])
+    const [showErrors, setShowErrors] = useState(false)
 
     const updateTitle = (e) => setTitle(e.target.value)
     const updateLogline = (e) => setLogline(e.target.value)
@@ -39,81 +43,90 @@ const EditFilmLocationForm = ({currentFilmLocation, closeModal}) => {
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const payload = {
-            id:currentFilmLocationId,
-            title,
-            logline,
-            description,
-            imageUrl,
-            address
+        if (validationErrors.length) setShowErrors(true);
+        else {
+            const payload = {
+                id: currentFilmLocationId,
+                title,
+                logline,
+                description,
+                imageUrl,
+                address
+            }
+            await dispatch(editFilmLocation(payload));
+            closeModal()
         }
-        await dispatch(editFilmLocation(payload));
-        closeModal()
     }
 
     return (
-        <form
+        <form className="forms"
             onSubmit={onSubmit}
         >
-            <h2>Edit Film Location</h2>
-            {validationErrors.length > 0 && (
-                <div>
-                    <ul className="errors">
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-            <label>
-                Title
-                <input
-                type='text'
-                name='title'
-                onChange={updateTitle}
-                value={title}
-                />
-            </label>
-            <label>
-                Logline
-                <input
-                type='text'
-                name='logline'
-                onChange={updateLogline}
-                value={logline}
-                />
-            </label>
-            <label>
-                Description
-                <input
-                type='text'
-                name='description'
-                onChange={updateDescription}
-                value={description}
-                />
-            </label>
-            <label>
-                Image URL
-                <input
-                type='text'
-                name='imageUrl'
-                onChange={updateImageUrl}
-                alt=""
-                value={imageUrl}
-                />
-            </label>
-            <label>
-                Address
-                <input
-                type='text'
-                name='address'
-                onChange={updateAddress}
-                value={address}
-                />
-            </label>
+            <h2 className='form-title'>Edit Film Location</h2>
+            <div>
+                <ul className="errors">
+                    {validationErrors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </div>
+            <div className='form-field'>
+                <label className='form-label'>
+                    Title
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='title'
+                        onChange={updateTitle}
+                        value={title}
+                    />
+                </label>
+                <label className='form-label'>
+                    Logline
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='logline'
+                        onChange={updateLogline}
+                        value={logline}
+                    />
+                </label>
+                <label className='form-label'>
+                    Description
+                    <textarea
+                        className='form-input textarea'
+                        type='text'
+                        name='description'
+                        onChange={updateDescription}
+                        value={description}
+                    />
+                </label>
+                <label className='form-label'>
+                    Image URL
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='imageUrl'
+                        onChange={updateImageUrl}
+                        alt=""
+                        value={imageUrl}
+                    />
+                </label>
+                <label className='form-label'>
+                    Address
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='address'
+                        onChange={updateAddress}
+                        value={address}
+                    />
+                </label>
+            </div>
             <button
-            type='submit'
-            disabled={!!validationErrors.length}
+                className='user-button'
+                type='submit'
+            // disabled={!!validationErrors.length}
             >
                 Submit
             </button>

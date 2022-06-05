@@ -18,19 +18,23 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    (sessionUser ?
-      <>
+    <div id='navigation'>
+      <img id='logo' src='/images/logo.png' />
+    {sessionUser ?
+      <div className='profile-button'>
         <ProfileButton user={sessionUser} />
-      </> :
-      <>
+      </div> :
+      <div className='user-button-div'>
         <LoginFormModal />
         <SignUpModal />
         <button
+          className='user-button'
           onClick={demoOnClick}
         >Demo
         </button>
-      </>
-    )
+      </div>
+    }
+    </div>
   )
 }
 
