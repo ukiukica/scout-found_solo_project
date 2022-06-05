@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom';
 import { editFilmLocation } from '../../store/filmLocations';
 
 import './EditFilmLocation.css'
+import '../Navigation/Navigation.css'
+import '../../context/Modal.css'
 
 const EditFilmLocationForm = ({ currentFilmLocation, closeModal }) => {
     const dispatch = useDispatch();
@@ -57,68 +59,74 @@ const EditFilmLocationForm = ({ currentFilmLocation, closeModal }) => {
     }
 
     return (
-        <form
+        <form className="forms"
             onSubmit={onSubmit}
         >
-            <h2>Edit Film Location</h2>
-            {/* {validationErrors.length > 0 && ( */}
-                <div>
-                    <ul className="errors">
-                        {validationErrors.map(error => (
-                            <li key={error}>{error}</li>
-                        ))}
-                    </ul>
-                </div>
-            {/* )} */}
-            <label>
-                Title
-                <input
-                    type='text'
-                    name='title'
-                    onChange={updateTitle}
-                    value={title}
-                />
-            </label>
-            <label>
-                Logline
-                <input
-                    type='text'
-                    name='logline'
-                    onChange={updateLogline}
-                    value={logline}
-                />
-            </label>
-            <label>
-                Description
-                <input
-                    type='text'
-                    name='description'
-                    onChange={updateDescription}
-                    value={description}
-                />
-            </label>
-            <label>
-                Image URL
-                <input
-                    type='text'
-                    name='imageUrl'
-                    onChange={updateImageUrl}
-                    alt=""
-                    value={imageUrl}
-                />
-            </label>
-            <label>
-                Address
-                <input
-                    type='text'
-                    name='address'
-                    onChange={updateAddress}
-                    value={address}
-                />
-            </label>
+            <h2 id='edit-location-title'>Edit Film Location</h2>
+            <div>
+                <ul className="errors">
+                    {validationErrors.map(error => (
+                        <li key={error}>{error}</li>
+                    ))}
+                </ul>
+            </div>
+            <div className='form-field'>
+                <label className='form-label'>
+                    Title
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='title'
+                        onChange={updateTitle}
+                        value={title}
+                    />
+                </label>
+                <label className='form-label'>
+                    Logline
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='logline'
+                        onChange={updateLogline}
+                        value={logline}
+                    />
+                </label>
+                <label className='form-label'>
+                    Description
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='description'
+                        onChange={updateDescription}
+                        value={description}
+                    />
+                </label>
+                <label className='form-label'>
+                    Image URL
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='imageUrl'
+                        onChange={updateImageUrl}
+                        alt=""
+                        value={imageUrl}
+                    />
+                </label>
+                <label className='form-label'>
+                    Address
+                    <input
+                        className='form-input'
+                        type='text'
+                        name='address'
+                        onChange={updateAddress}
+                        value={address}
+                    />
+                </label>
+            </div>
             <button
+                className='user-button'
                 type='submit'
-                // disabled={!!validationErrors.length}
+            // disabled={!!validationErrors.length}
             >
                 Submit
             </button>

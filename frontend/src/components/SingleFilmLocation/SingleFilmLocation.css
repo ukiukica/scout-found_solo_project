@@ -1,0 +1,44 @@
+#back-button {
+    margin: 2% 0 3% 2.5%;
+
+}
+
+#image-div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+#main-image {
+    width: 700px;
+}
+
+#single-location-title {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+    text-transform: uppercase;
+}
+
+#single-location-logline {
+    margin-top: 2%;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+}
+
+#single-location-desc {
+    margin-top: 4%;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+}
+
+#single-location-address {
+    margin-top: 2%;
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+}
+
+#single-film-location {
+    display: flex;
+    flex-direction: column;
+}

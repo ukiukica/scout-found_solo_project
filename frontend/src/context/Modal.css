@@ -67,6 +67,11 @@
   border: solid 2px #a58f77;
 }
 
+.form-input:focus {
+  border: solid 2px #a58f77;
+  background-color: #eae0d5;
+}
+
 .form-label {
   display:flex;
   flex-direction:column;

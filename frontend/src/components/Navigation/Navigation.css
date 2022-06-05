@@ -19,6 +19,7 @@
 .user-button {
     margin: 5px;
     padding: 5px 10px;
+    max-width: fit-content;
     background-color: #eae0d5;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bolder;

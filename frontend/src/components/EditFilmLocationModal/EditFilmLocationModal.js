@@ -7,7 +7,7 @@ function EditFilmLocationModal ({currentFilmLocation}) {
 
     return (
         <>
-          <button onClick={() => setShowModal(true)}>Edit Location</button>
+          <button className='user-button' onClick={() => setShowModal(true)}>Edit Location</button>
           {showModal && (
             <Modal onClose={() => setShowModal(false)}>
               <EditFilmLocationForm closeModal={() => setShowModal(false)} currentFilmLocation={currentFilmLocation}/>
