@@ -36,6 +36,7 @@ const EditReviewForm = ({ review, currentFilmLocation, closeModal }) => {
                 content
             }
             await dispatch(editReview(payload))
+            dispatch(getReviews());
             closeModal()
         }
     }
