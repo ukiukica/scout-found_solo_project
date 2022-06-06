@@ -1,0 +1,70 @@
+.social-logo {
+    max-width: 100px;
+    height: auto;
+}
+
+#github-logo {
+    max-width: 120px;
+    height: auto;
+}
+
+#linkedin-logo {
+    max-width: 50px;
+    height: auto;
+}
+
+#about-p {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+    max-width: 400px;
+    margin: 0 0 0 4%;
+    text-align: left;
+}
+
+#about-h1 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+}
+
+#dev-pic {
+    width: 200px;
+}
+
+#img-bio-div {
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    margin-top: 4%;
+}
+
+#about-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#social-links > * {
+    margin: 0 1% 0 1%;
+}
+
+#about-h3 {
+    font-family: 'Courier New', Courier, monospace;
+    color: #f2ece6;
+    margin: 5% 0 1.5% 0;
+}
+
+.user-button.about-page {
+    margin: 2% 0 5% 2%;
+}
+
+#about-link {
+    display: flex;
+    text-decoration: none;
+    
+}

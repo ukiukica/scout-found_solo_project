@@ -11,6 +11,8 @@ import SingleFilmLocation from "./components/SingleFilmLocation/SingleFilmLocati
 // import EditFilmLocation from "./components/EditFilmLocationForm/EditFilmLocation";
 import { getReviews } from "./store/reviews";
 import SplashPage from "./components/SplashPage/SplashPage";
+import About from "./components/About/About";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -61,8 +63,12 @@ function App() {
           {/* <Route>
             <CreateReview />
           </Route> */}
+          <Route>
+            <About />
+          </Route>
         </Switch>
       )}
+      <Footer />
     </>
   );
 }

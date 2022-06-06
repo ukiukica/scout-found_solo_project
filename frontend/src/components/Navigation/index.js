@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
@@ -18,23 +18,27 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div id='navigation'>
-      <img id='logo' src='/images/logo.png' />
-    {sessionUser ?
-      <div className='profile-button'>
-        <ProfileButton user={sessionUser} />
-      </div> :
-      <div className='user-button-div'>
-        <LoginFormModal />
-        <SignUpModal />
-        <button
-          className='user-button'
-          onClick={demoOnClick}
-        >Demo
-        </button>
+    <>
+      <div id='nav-parent'>
+        <div id='navigation'>
+          <img id='logo' src='/images/logo.png' />
+          {sessionUser ?
+            <div className='profile-button'>
+              <ProfileButton user={sessionUser} />
+            </div> :
+            <div className='user-button-div'>
+              <LoginFormModal />
+              <SignUpModal />
+              <button
+                className='user-button'
+                onClick={demoOnClick}
+              >Demo
+              </button>
+            </div>
+          }
+        </div>
       </div>
-    }
-    </div>
+    </>
   )
 }
 
