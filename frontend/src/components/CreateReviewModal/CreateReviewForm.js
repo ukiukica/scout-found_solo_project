@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 import * as sessionActions from "../../store/session";
 import { createReview } from '../../store/reviews';
+import { getReviews } from '../../store/reviews';
 
 import './CreateReview.css'
 import '../Navigation/Navigation.css'
@@ -41,6 +42,7 @@ const CreateReviewForm = ({ currentFilmLocation, closeModal }) => {
 
             }
             await dispatch(createReview(payload))
+            dispatch(getReviews());
             closeModal()
         }
     }

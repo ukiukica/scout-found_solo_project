@@ -30,7 +30,7 @@ function LoginForm() {
   return (
     <div >
       <form className="forms" onSubmit={handleSubmit}>
-        <ul>
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
