@@ -14,6 +14,8 @@ Find your next film set here: https://scout-found.herokuapp.com/
 
 ## Images
 
+![alt text](https://github.com/ukiukica/scout-found_solo_project/frontend/public/ScoutFound_Screenshot-1.jpg)
+
 ## MVP Features
 1. Splash Page
 <br>
