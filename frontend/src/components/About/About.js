@@ -14,7 +14,14 @@ function About() {
             <h1 id='about-h1'>About Developer</h1>
             <div id='img-bio-div'>
                 <img id='dev-pic' src='/images/ukiweb1.jpg' />
-                <p id='about-p'>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultrices, nulla quis facilisis volutpat, velit quam pharetra urna, at tempus purus ante quis lacus. Nam egestas metus mi, non posuere justo iaculis quis. Integer varius accumsan fringilla. Etiam at ante erat. Morbi dignissim tempus tincidunt. Aliquam erat volutpat. Praesent sodales sit amet ante nec pulvinar."</p>
+                <p id='about-p'>Uki Pavlovic is a New York-based director, producer, and actor. As of 2022, he is also an aspiring software engineer.
+                <br></br>
+                Born and raised Serbian, but in his heart he is what would be considered a naturalized New Yorker.
+                <br></br>
+                His favorite food is burek, a filo dough pie with cheese and meat.
+                <br></br>
+                You can find Uki sipping beer at a local bar talking too much about Europe.
+                </p>
             </div>
             <h3 id='about-h3'>Find Uki on</h3>
             <div id='social-links'>
