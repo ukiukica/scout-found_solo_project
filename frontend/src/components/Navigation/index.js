@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpModal from '../SignupFormPage/SignUpModal';
 import { demouser } from '../../store/session';
+import SearchBar from '../SearchBar/Searchbar';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -22,6 +23,9 @@ function Navigation({ isLoaded }) {
       <div id='nav-parent'>
         <div id='navigation'>
           <img id='logo' src='/images/logo.png' />
+          <div id="search-div">
+            <SearchBar />
+          </div>
           {sessionUser ?
             <div className='profile-button'>
               <ProfileButton user={sessionUser} />
