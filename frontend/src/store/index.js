@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import filmLocationsReducer from './filmLocations'
 import reviewsReducer from "./reviews";
+import mapReducer from "./map";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   filmLocationsReducer,
   reviewsReducer,
+  map: mapReducer,
   // add reducer functions here
 });
 

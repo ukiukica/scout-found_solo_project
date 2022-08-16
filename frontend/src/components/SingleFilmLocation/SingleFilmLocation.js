@@ -5,9 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFilmLocation } from '../../store/filmLocations';
 import Reviews from '../Reviews/Reviews.js'
 import EditFilmLocationModal from '../EditFilmLocationModal/EditFilmLocationModal';
+import MapContainer from '../MapContainer/MapContainer';
+
 
 import './SingleFilmLocation.css'
 import '../Navigation/Navigation.css'
+
 
 function SingleFilmLocation() {
     const dispatch = useDispatch();
@@ -64,6 +67,7 @@ function SingleFilmLocation() {
                             <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
                         </div>
                     </div>
+                    <MapContainer address={currentFilmLocation.address} />
                 </div>
             )}
 
