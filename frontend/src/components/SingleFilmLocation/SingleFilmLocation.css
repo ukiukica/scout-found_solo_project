@@ -55,7 +55,8 @@
 #map-div {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: center;
+    padding-top: 4%;
 }
 
 .location-nav-title {
@@ -64,9 +65,15 @@
     font-size: 20px;
 }
 
+.location-nav-title:hover {
+    color: #ebd2b8;
+    cursor: pointer;
+
+}
+
 .location-page-nav {
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid #eae0d5;
-    padding-bottom: 2%;
+    padding-bottom: 1%;
 }

@@ -22,11 +22,6 @@ function Reviews({ reviews, currentFilmLocation }) {
 
     return (
         <div>
-            {sessionUser ?
-                <CreateReviewModal currentFilmLocation={currentFilmLocation} />
-                : <h3 className='not-logged-in'>Log in to leave a review!</h3>
-            }
-
             {reviewsArr && (
                 <div id='review-container'>
                     {relatedReviews.map((review) => (
@@ -53,6 +48,11 @@ function Reviews({ reviews, currentFilmLocation }) {
                         </div>
 
                     ))}
+                    
+                    {sessionUser ?
+                <CreateReviewModal currentFilmLocation={currentFilmLocation} />
+                : <h3 className='not-logged-in'>Log in to leave a review!</h3>
+            }
                 </div>
             )}
         </div>

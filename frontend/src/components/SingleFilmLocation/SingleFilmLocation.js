@@ -77,9 +77,7 @@ function SingleFilmLocation() {
                             <p id='single-location-logline' >{currentFilmLocation.logline}</p>
                             <p id='single-location-desc' >{currentFilmLocation.description}</p>
                             <p id='single-location-address'>Address: {currentFilmLocation.address}</p>
-                            <div id="map-div">
 
-                            </div>
                             {currentFilmLocation.userId === userId && (
                                 <div id='location-buttons-div'>
                                     <EditFilmLocationModal currentFilmLocation={currentFilmLocation} />
@@ -91,11 +89,14 @@ function SingleFilmLocation() {
                             )}
                             <div className='location-page-nav'>
                                 <h2 className='location-nav-title' onClick={mapOnClick}>Map</h2>
-                                <h2 className='location-nav-title' onClick={notesOnClick}>Notes</h2>
+                                {/* <h2 className='location-nav-title' onClick={notesOnClick}>Notes</h2> */}
                                 <h2 className='location-nav-title' onClick={reviewsOnClick}>Reviews</h2>
                             </div>
+                            
                             {showMap ?
+                            <div id="map-div">
                                 <MapContainer address={currentFilmLocation.address} />
+                                </div>
                                 :
                                 showNotes ? <div style={{color:"white"}}>Notes</div>
                                     :

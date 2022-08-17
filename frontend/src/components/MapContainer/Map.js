@@ -36,8 +36,8 @@ const Maps = ({ apiKey, address }) => {
 
 
 const containerStyle = {
-    width: '550px',
-    height: '300px',
+    width: '700px',
+    height: '350px',
 }
 
 const Map = ({address}) => {
@@ -91,7 +91,7 @@ const Map = ({address}) => {
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={5}
+                zoom={7}
                 onLoad={onLoad}
             // onCenterChanged={trackNewCenter}
             >
