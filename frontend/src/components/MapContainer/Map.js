@@ -1,15 +1,6 @@
 import React, { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 
 import { GoogleMap, useLoadScript, Marker, MarkerClusterer, InfoWindow } from '@react-google-maps/api';
-import {
-    Combobox,
-    ComboboxInput,
-    ComboboxPopover,
-    ComboboxList,
-    ComboboxOption,
-    ComboboxOptionText,
-} from "@reach/combobox";
-import "@reach/combobox/styles.css";
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
