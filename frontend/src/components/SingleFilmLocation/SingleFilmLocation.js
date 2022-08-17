@@ -5,9 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFilmLocation } from '../../store/filmLocations';
 import Reviews from '../Reviews/Reviews.js'
 import EditFilmLocationModal from '../EditFilmLocationModal/EditFilmLocationModal';
+import MapContainer from '../MapContainer/MapContainer';
+
 
 import './SingleFilmLocation.css'
 import '../Navigation/Navigation.css'
+import '../global.css'
+
 
 function SingleFilmLocation() {
     const dispatch = useDispatch();
@@ -21,6 +25,29 @@ function SingleFilmLocation() {
     const reviews = useSelector(state => state.reviewsReducer)
 
     let userId = useSelector((state) => state.session.user?.id)
+
+    const [showMap, setShowMap] = useState(true);
+    const [showNotes, setShowNotes] = useState(false);
+    const [showReviews, setShowReviews] = useState(false);
+
+    const mapOnClick = () => {
+        setShowMap(true);
+        setShowNotes(false);
+        setShowReviews(false);
+    }
+
+    const notesOnClick = () => {
+        setShowMap(false);
+        setShowNotes(true);
+        setShowReviews(false);
+    }
+
+    const reviewsOnClick = () => {
+        setShowMap(false);
+        setShowNotes(false);
+        setShowReviews(true);
+    }
+
 
 
     const onClick = async (e) => {
@@ -60,10 +87,25 @@ function SingleFilmLocation() {
                                     </button>
                                 </div>
                             )}
+                            <div className='location-page-nav'>
+                                <h2 className='location-nav-title' onClick={mapOnClick}>Map</h2>
+                                {/* <h2 className='location-nav-title' onClick={notesOnClick}>Notes</h2> */}
+                                <h2 className='location-nav-title' onClick={reviewsOnClick}>Reviews</h2>
+                            </div>
+                            
+                            {showMap ?
+                            <div id="map-div">
+                                <MapContainer address={currentFilmLocation.address} />
+                                </div>
+                                :
+                                showNotes ? <div style={{color:"white"}}>Notes</div>
+                                    :
+                                    <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
+                            }
 
-                            <Reviews reviews={reviews} currentFilmLocation={currentFilmLocation} />
                         </div>
                     </div>
+
                 </div>
             )}
 

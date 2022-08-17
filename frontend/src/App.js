@@ -13,6 +13,7 @@ import { getReviews } from "./store/reviews";
 import SplashPage from "./components/SplashPage/SplashPage";
 import About from "./components/About/About";
 import Footer from "./components/Footer/Footer";
+import MapContainer from "./components/MapContainer/MapContainer";
 
 
 function App() {
@@ -63,8 +64,11 @@ function App() {
           {/* <Route>
             <CreateReview />
           </Route> */}
-          <Route>
+          <Route path="/about">
             <About />
+          </Route>
+          <Route exact path="/maps">
+            <MapContainer />
           </Route>
         </Switch>
       )}

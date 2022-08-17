@@ -51,3 +51,31 @@
     margin: 0 10% 0 10%;
 
 }
+
+#map-div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 4%;
+    padding-top: 20px;
+    height: 350px;
+}
+
+.location-nav-title {
+    margin-top: 5%;
+    color: #f2ece6;
+    font-size: 20px;
+}
+
+.location-nav-title:hover {
+    color: #ebd2b8;
+    cursor: pointer;
+
+}
+
+.location-page-nav {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid #eae0d5;
+    padding-bottom: 1%;
+}

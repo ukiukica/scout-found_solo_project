@@ -3,6 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const filmLocationsRouter = require('./filmLocations.js')
 const reviewsRouter = require('./reviews.js')
+const mapRouter = require('./map.js')
 
 const { csrfProtection } = require('../../utils/csrf');
 const asyncHandler = require('express-async-handler');
@@ -20,6 +21,8 @@ router.use('/users', usersRouter);
 router.use('/filmLocations', filmLocationsRouter)
 
 router.use('/reviews', reviewsRouter)
+
+router.use('/map', mapRouter)
 
 
 

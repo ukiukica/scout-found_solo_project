@@ -19,7 +19,6 @@ router.get('/', asyncHandler(async (req, res) => {
         // },
         order:[['createdAt', 'DESC']]
     })
-    console.log(reviews)
     return res.json(reviews)
 
 }))
