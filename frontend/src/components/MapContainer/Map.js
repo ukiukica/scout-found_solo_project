@@ -36,8 +36,8 @@ const Maps = ({ apiKey, address }) => {
 
 
 const containerStyle = {
-    width: '400px',
-    height: '400px',
+    width: '550px',
+    height: '300px',
 }
 
 const Map = ({address}) => {

@@ -5,6 +5,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
+// require('dotenv').config()
 
 const routes = require('./routes');
 

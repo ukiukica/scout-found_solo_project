@@ -8,15 +8,6 @@ display: none;
 
 }
 
-#reviews-title {
-    margin-top: 5%;
-    font-family: 'Courier New', Courier, monospace;
-    color: #f2ece6;
-    font-size: 30px;
-    border-bottom: 1px solid #eae0d5;
-    padding-bottom: 2%;
-}
-
 #single-review-div {
     font-family: 'Courier New', Courier, monospace;
     color: #f2ece6;

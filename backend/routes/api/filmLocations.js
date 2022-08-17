@@ -11,9 +11,7 @@ const filmLocationsValidations = require('../../validations/filmLocations')
 
 
 router.get('/', asyncHandler(async (req, res) => {
-    console.log("ENTERED GET HOME ROUTE")
     const filmLocations = await db.FilmLocation.findAll();
-    console.log(filmLocations)
     return res.json(filmLocations);
 }))
 
