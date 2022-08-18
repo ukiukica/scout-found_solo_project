@@ -29,9 +29,7 @@ display: none;
     margin-top: 0;
 }
 
-.user-button.review-button {
-    font-size: 10px;
-}
+
 
 .not-logged-in {
     font-family: 'Courier New', Courier, monospace;
