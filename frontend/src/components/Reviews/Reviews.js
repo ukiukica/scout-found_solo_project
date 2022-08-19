@@ -18,7 +18,6 @@ function Reviews({ reviews, currentFilmLocation }) {
     // const reviews = useSelector(state => state.reviewsReducer)
     const reviewsArr = Object.values(reviews)
     const relatedReviews = reviewsArr.filter(review => review.filmLocationId === currentFilmLocation.id)
-    console.log("REVIEWS ARR NEW", relatedReviews)
 
     return (
         <div>
@@ -48,7 +47,7 @@ function Reviews({ reviews, currentFilmLocation }) {
                         </div>
 
                     ))}
-                    
+
                     {sessionUser ?
                 <CreateReviewModal currentFilmLocation={currentFilmLocation} />
                 : <h3 className='not-logged-in'>Log in to leave a review!</h3>
