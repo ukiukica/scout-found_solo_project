@@ -30,6 +30,7 @@
 
 * {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
 .user-button {
@@ -46,7 +47,7 @@
 
 }
 .user-button:hover {
-    background-color: #619b8a;
+    background-color: #5e7290;
     color:#fffbf7;
 }
 
@@ -63,19 +64,31 @@
 }
 
 .user-button-modal {
+    border: none;
+    border-radius: 5px;
     margin: 5px;
-    padding: 5px 10px;
+    padding: 9.5px 10px;
     font-weight: bolder;
-    color:#eae0d5;
-    background-color: #5e503f;
+    color:#fffbf7;
+    background-color: #22333B;
     font-size: 15px;
     transition: background-color 0.1s, box-shadow 0.1s;
-    border-color: #5e503f;
     width: 100px;
-    box-shadow: 1px 1px 2px rgb(0, 0, 0);
   }
-  .user-button-modal:hover {
-    box-shadow: 0px 0px 0px rgb(0, 0, 0);
-    background-color: #eae0d5;
-    color: #0a0908;
+
+.user-button-modal:hover {
+  box-shadow: 0px 0px 0px rgb(0, 0, 0);
+  background-color: #5e7290;
+}
+
+.demo {
+    background-color: #619b8a;
+    color:#fffbf7;
+    padding-left: 30px;
+    padding-right: 30px;
+    transition: background-color 0.1s;
+}
+
+.demo:hover {
+    background-color: #5e7290;
 }

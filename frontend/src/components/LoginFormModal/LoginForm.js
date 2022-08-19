@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { demouser } from '../../store/session';
+
 import './LoginForm.css'
 import '../../context/Modal.css'
 
@@ -15,6 +17,11 @@ function LoginForm() {
   // const sessionUser = useSelector((state) => state.session.user);
 
   // if (sessionUser) return <Redirect to="/filmLocations" />;
+
+  const demoOnClick = async (e) => {
+    e.preventDefault();
+    await dispatch(demouser())
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +69,14 @@ function LoginForm() {
             />
           </label>
         </div>
-        <button className='user-button-modal' type="submit">Log In</button>
+        <div>
+          <button className='user-button-modal' type="submit">Log In</button>
+          <button
+            className='user-button demo'
+            onClick={demoOnClick}
+          >Demo
+          </button>
+        </div>
       </form>
     </div>
   );

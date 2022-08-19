@@ -37,23 +37,26 @@
 
 
 .form-input {
+  -webkit-appearance: none;
   display:flex;
   flex-direction:column;
-  border-radius: 15px;
+  border-radius: 5px;
   padding: 5px 10px;
-  border: solid 2px #0a0908;
+  border: solid 1px #0a0908;
   width: 200px;
   height: 27px;
   transition: border 0.1s;
+  resize: none;
 }
 
 .form-input:hover {
-  border: solid 2px #a58f77;
+  border: solid 1px #5e7290;
 }
 
 .form-input:focus {
-  border: solid 2px #a58f77;
-  background-color: #eae0d5;
+  outline:none;
+  background-color: #f4f4f4;
+  border: solid 1px #5e7290;
 }
 
 .form-label {
