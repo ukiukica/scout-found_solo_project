@@ -17,6 +17,10 @@
     background-color: #fffbf7;
 }
 
+#nav-search:focus {
+    outline: none;
+}
+
 .camera-search-result {
     /* background: rgb(247, 243, 231); */
     /* padding: 10px; */

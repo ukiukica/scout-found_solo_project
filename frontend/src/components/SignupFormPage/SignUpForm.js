@@ -32,6 +32,9 @@ function SignupForm() {
 
   return (
     <form className="forms" onSubmit={handleSubmit}>
+      <div className="login-h2-div">
+          <h2 id="login-h2">Sign Up</h2>
+        </div>
       <ul className='errors'>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
@@ -83,7 +86,7 @@ function SignupForm() {
         />
       </label>
       </div>
-      <button className='user-button' type="submit">Sign Up</button>
+      <button className='user-button-modal' type="submit">Sign Up</button>
     </form>
   );
 }
