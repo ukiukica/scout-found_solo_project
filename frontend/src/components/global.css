@@ -47,8 +47,8 @@
 
 }
 .user-button:hover {
-    background-color: #5e7290;
-    color:#fffbf7;
+    background-color: #dfcdbb;
+    /* color:#fffbf7; */
 }
 
 .user-button.logout {
