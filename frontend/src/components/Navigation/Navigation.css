@@ -13,26 +13,8 @@
 }
 
 .user-button-div {
-    margin-right: 30px;
+    margin-right: 60px;
     white-space: nowrap;
-}
-
-.user-button {
-    margin: 5px;
-    padding: 5px 10px;
-    max-width: fit-content;
-    background-color: #eae0d5;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bolder;
-    color: #0a0908;
-    font-size: 15px;
-    transition: background-color 0.1s;
-    border-color: #5e503f;
-
-}
-.user-button:hover {
-    background-color: #5e503f;
-    color:#eae0d5;
 }
 
 .profile-button {
@@ -64,9 +46,7 @@
     color:#eae0d5;
 }
 
-.user-button.logout {
-    margin: 0px;
-}
+
 
 #profile-button {
     background-color: #eae0d5;

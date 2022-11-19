@@ -7,13 +7,18 @@
 } */
 
 #nav-search {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     -webkit-appearance: none;
     padding: 5px;
     width: 550px;
     height: 25px;
     border-radius: 2px;
     border: none;
-    background-color: #eae0d5;
+    background-color: #fffbf7;
+}
+
+#nav-search:focus {
+    outline: none;
 }
 
 .camera-search-result {
@@ -42,6 +47,8 @@
 }
 
 .camera-result {
+    background-color: #fffbf7;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: #eae0d5;
     color: #2c2b2c;
     line-height: 3;

@@ -33,7 +33,6 @@ function App() {
   }, [dispatch])
 
   const filmLocations = useSelector(state => state.filmLocationsReducer)
-  // console.log(filmLocations)
   const reviews = useSelector(state => state.reviewsReducer)
 
 

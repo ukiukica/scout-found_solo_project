@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignUpModal from '../SignupFormPage/SignUpModal';
-import { demouser } from '../../store/session';
 import SearchBar from '../SearchBar/Searchbar';
 import './Navigation.css';
 
@@ -13,10 +12,6 @@ function Navigation({ isLoaded }) {
 
   const dispatch = useDispatch();
 
-  const demoOnClick = async (e) => {
-    e.preventDefault();
-    await dispatch(demouser())
-  }
 
   return (
     <>
@@ -33,11 +28,6 @@ function Navigation({ isLoaded }) {
             <div className='user-button-div'>
               <LoginFormModal />
               <SignUpModal />
-              <button
-                className='user-button'
-                onClick={demoOnClick}
-              >Demo
-              </button>
             </div>
           }
         </div>
